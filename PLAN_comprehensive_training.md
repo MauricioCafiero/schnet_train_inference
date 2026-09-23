@@ -110,6 +110,57 @@ On the local CPU this set would take about 3 min per epoch (about 15 h for
   current pricing before running.* $3 ≈ 2.7 h A10G or 3.7 h L4. 300 epochs
   fits if an epoch takes ≤ 30–45 s on the GPU (a guess until the probe).
 
+## Memory on Modal
+
+Locally the constraint was an 8 GB Mac shared with other work. On Modal it is
+a 24 GB GPU (A10G or L4) billed by the second, so the aim is to use memory
+efficiently without paying for idle GPU time.
+
+**No longer needed**
+
+- **Micro-batching** (`--micro-batch`). It existed because Apple's MPS
+  allocator peaked at about 0.85 GB per 144-atom frame. On CUDA, raise the
+  batch size instead. Guide: CPU measured about 0.3 GB/frame, so batch 16 ≈
+  5 GB; there is plenty of headroom even if CUDA peaks are 2–3× that. The probe
+  measures the real value.
+- **The free-memory watchdog and `caffeinate`.** They protected the laptop.
+  On Modal the guards are the function `timeout` (cost cap) and a clean CUDA
+  out-of-memory error, which fails fast instead of swapping.
+- **The MPS float64 workaround** (explicit float32 `AddOffsets` mean). It is
+  harmless on CUDA, so leave it in.
+
+**Changes to make**
+
+1. **CUDA memory logging.** Extend `MemoryLog` in `train_spk.py` to log
+   `torch.cuda.max_memory_allocated()` / `max_memory_reserved()` (it
+   currently reports process RSS + MPS driver memory).
+2. **Worst-case probe.** Frames range from about 20 to 144 atoms, so memory
+   varies per batch. Before training, run one forward + backward pass (with
+   forces) on a batch made only of the largest frames at the chosen batch
+   size. If it fits, every batch fits. Seconds of GPU time.
+3. **Batch size** (open decision 5 below). Batch 16 uses the GPU well and is
+   cheaper per epoch, but gives 4× fewer optimizer steps per epoch than Runs
+   1–2 (batch 4) and changes the training dynamics. Keep lr 5e-4 (or raise it
+   modestly) with gradient clipping at 10.
+4. **Allocator:** set `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` to
+   limit fragmentation with variable batch sizes. That is the CUDA counterpart
+   of the over-reservation measured on MPS.
+5. **Precision: float32.** Not bf16/fp16: the second backward pass for forces
+   is sensitive, and the `../mace` notes record low-precision failures. TF32
+   matmuls on Ampere+ GPUs are fine.
+6. **Container:** modest host RAM (~8 GB) and 4 CPUs, with 2–4 DataLoader
+   workers (`num_workers`) so the GPU is not waiting on neighbor lists. The
+   data is only a few MB of XYZ plus a small ASE db.
+7. **Neighbor-list cache on local container disk** (`/tmp`), not the Volume
+   (Volume writes are slower). It rebuilds in the first epoch.
+8. **Checkpoint every epoch.** SchNetPack's `ModelCheckpoint` only refreshes
+   `last.ckpt` when validation improves (why the Run-1 resume restarted from
+   epoch 188). Add a plain Lightning checkpoint that writes `last.ckpt` to the
+   Volume **every epoch** (~7 MB), so a timeout loses at most one epoch.
+
+**Locally:** only the GFN2 labelling runs on the Mac (~10–15 min, ~1 GB, the
+existing 4-worker setup), plus a few-MB upload to Modal.
+
 ## Evaluation (same as Runs 1–2, per system)
 
 - Held-out fit per molecule (energy meV/atom, forces meV/Å); per-formula
@@ -137,6 +188,9 @@ On the local CPU this set would take about 3 min per epoch (about 15 h for
    slower per epoch). The timing probe can decide.
 4. **Small fragments:** add GFN2-labelled capped fragments or S66-like dimers
    if the stacking benchmark matters. They are far outside everything else.
+5. **Batch size on the GPU:** 16 (recommended: cheaper, better GPU use; note
+   the change in the README) or 4 (directly comparable with Runs 1–2 but
+   underuses the GPU and costs more per epoch).
 
 ## Checklist when resuming
 
@@ -145,6 +199,7 @@ On the local CPU this set would take about 3 min per epoch (about 15 h for
 - [ ] `build_dataset.py` → unlabelled frames + monomers + provenance
 - [ ] Topology check vs SMILES for every system
 - [ ] GFN2 labels (local) → force-outlier screen → block splits
-- [ ] `modal_train_spk.py` → 2-epoch probe → size the run to ≤ $3
+- [ ] `train_spk.py`: CUDA memory logging, per-epoch `last.ckpt`, DataLoader workers
+- [ ] `modal_train_spk.py` → worst-case memory probe → 2-epoch timing probe → size the run to ≤ $3
 - [ ] Full run (timeout cap, per-epoch checkpoints)
 - [ ] Evaluation (fit, E_int per system, benchmark, OOD) → README → push
