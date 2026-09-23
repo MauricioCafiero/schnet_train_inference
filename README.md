@@ -664,6 +664,10 @@ at 22:33, and there were no pauses after that. Both runners now end with a
 
 ## Next steps
 
+A detailed plan for a multi-rotaxane training set (Run 3, Modal GPU, ~$3)
+is in [`PLAN_comprehensive_training.md`](PLAN_comprehensive_training.md).
+
+
 - Train on monomers of more rotaxanes, and on partially dethreaded
   geometries (`dethread1`), so interaction energies transfer beyond this one
   system. The whole-structure ordering regressed in run 2.
