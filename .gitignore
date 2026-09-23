@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# diagnostic / probe runs (leading underscore)
+output/_*/
+output/_*.log
+
+# per-run intermediates: rebuilt from data/ on the next run
+output/*/data.db
+output/*/split.npz
+output/*/nbl_cache/
+output/*/lightning/*.ckpt
+output/*/lightning/hparams.yaml
+
+# local tool state / schnetpack lock files
+.claude/
+*.lock

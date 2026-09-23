@@ -1,0 +1,81 @@
+{
+ "stacking": {
+  "off-medium": {
+   "center_4F": -10.670990221809147,
+   "center_2F": -9.769950579933523,
+   "center_0F": -8.165643986765735,
+   "weak_stopper_real": -8.091373539976326,
+   "strong_stopper_real": -11.510985335137448,
+   "strong_stopper": -10.713724669379936,
+   "weak_stopper": -8.988085175050282
+  },
+  "off-large": {
+   "center_4F": -10.243976098989235,
+   "center_2F": -9.599369284513706,
+   "center_0F": -7.784771893189907,
+   "weak_stopper_real": -7.286600217041218,
+   "strong_stopper_real": -10.897790147466262,
+   "strong_stopper": -10.763082600442553,
+   "weak_stopper": -8.710078611965905
+  },
+  "ft-medium": {
+   "center_4F": -11.165651597902892,
+   "center_2F": -10.70654240202717,
+   "center_0F": -9.228274499286545,
+   "weak_stopper_real": -8.779973944011035,
+   "strong_stopper_real": -12.34924480125723,
+   "strong_stopper": -13.202604066537896,
+   "weak_stopper": -10.721436528871976
+  },
+  "ft-large": {
+   "center_4F": -14.99143823416236,
+   "center_2F": -14.872648996483955,
+   "center_0F": -13.040158906877135,
+   "weak_stopper_real": -11.194973368898394,
+   "strong_stopper_real": -16.714632287726612,
+   "strong_stopper": -16.690770280444276,
+   "weak_stopper": -13.492073284116072
+  },
+  "ft-dimer": {
+   "center_4F": -13.586431430845735,
+   "center_2F": -13.079000541677757,
+   "center_0F": -11.631728444665276,
+   "weak_stopper_real": -10.069647265180302,
+   "strong_stopper_real": -13.499359436826179,
+   "strong_stopper": -14.182139957066036,
+   "weak_stopper": -11.584929654889567
+  }
+ },
+ "whole": {
+  "off-medium": {
+   "cf3_ring": -33.52410640816593,
+   "iso_ring": -30.68922918252397,
+   "central_cf3side": -31.275036158737663,
+   "central_isoside": -26.213461342030346
+  },
+  "off-large": {
+   "cf3_ring": -32.740698405843695,
+   "iso_ring": -30.042743243684026,
+   "central_cf3side": -30.74923814755006,
+   "central_isoside": -24.855084714835698
+  },
+  "ft-medium": {
+   "cf3_ring": -36.07940357930285,
+   "iso_ring": -34.04958072458066,
+   "central_cf3side": -32.86826143565055,
+   "central_isoside": -31.41103912540289
+  },
+  "ft-large": {
+   "cf3_ring": -44.591904251986,
+   "iso_ring": -46.278171716910705,
+   "central_cf3side": -42.060257878232854,
+   "central_isoside": -38.41803455678456
+  },
+  "ft-dimer": {
+   "cf3_ring": -40.92324615437958,
+   "iso_ring": -43.617671284206665,
+   "central_cf3side": -37.352884703676175,
+   "central_isoside": -41.77333833890062
+  }
+ }
+}
