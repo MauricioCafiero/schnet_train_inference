@@ -11,7 +11,8 @@ goes to ``output/<name>/``:
     nbl_cache/           cached neighbor lists (built on the first epoch)
     best_model           best inference model (by val_loss), loadable with
                          SpkCalculator / torch.load
-    lightning/           Lightning checkpoints + CSV log (metrics.csv)
+    lightning/           Lightning checkpoints + CSV log (metrics.csv;
+                         resumed runs log to lightning/resume_<k>/)
     metrics.json         final float64 CPU evaluation of best_model on valid
 
 MPS notes: Apple's MPS has no float64. SchNetPack's ``AddOffsets`` normally
@@ -99,6 +100,9 @@ def main(argv=None):
     p.add_argument("--device", default="mps", help="mps | cpu | cuda")
     p.add_argument("--seed", type=int, default=123)
     p.add_argument("--max-steps", type=int, default=-1, help="for quick probes")
+    p.add_argument("--resume", action="store_true",
+                   help="continue output/<name>/ from lightning/last.ckpt up to --epochs "
+                        "(total); optimizer, LR schedule and best-model score are restored")
     a = p.parse_args(argv)
     micro = a.micro_batch or a.batch_size
     assert a.batch_size % micro == 0, "--batch-size must be a multiple of --micro-batch"
@@ -169,11 +173,17 @@ def main(argv=None):
         scheduler_args={"factor": 0.5, "patience": 25, "min_lr": 1e-6},
         scheduler_monitor="val_loss")
 
+    # Lightning's CSVLogger deletes an existing metrics.csv, so a resumed run
+    # logs to its own subfolder (lightning/resume_<k>/metrics.csv)
+    ckpt, version = None, ""
+    if a.resume:
+        ckpt = str(out / "lightning" / "last.ckpt")
+        version = f"resume_{len(list((out / 'lightning').glob('resume_*'))) + 1}"
     trainer = pl.Trainer(
         accelerator=a.device, devices=1, max_epochs=a.epochs, max_steps=a.max_steps,
         accumulate_grad_batches=a.batch_size // micro,
         default_root_dir=str(out / "lightning"),
-        logger=CSVLogger(str(out / "lightning"), name="", version=""),
+        logger=CSVLogger(str(out / "lightning"), name="", version=version),
         callbacks=[spk.train.ModelCheckpoint(model_path=str(out / "best_model"),
                                              dirpath=str(out / "lightning"),
                                              monitor="val_loss", save_last=True),
@@ -182,7 +192,9 @@ def main(argv=None):
                    MemoryLog()],
         enable_progress_bar=False, log_every_n_steps=10)
     t0 = time.time()
-    trainer.fit(task, datamodule=data)
+    # our own checkpoint; it pickles the model via save_hyperparameters, so a
+    # weights-only load (Lightning default) refuses it
+    trainer.fit(task, datamodule=data, ckpt_path=ckpt, weights_only=False if ckpt else None)
     wall = time.time() - t0
 
     if not (out / "best_model").exists():   # e.g. --max-steps probe ended before validation

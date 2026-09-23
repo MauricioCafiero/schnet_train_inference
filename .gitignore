@@ -17,3 +17,8 @@ output/*/lightning/hparams.yaml
 # local tool state / schnetpack lock files
 .claude/
 *.lock
+
+# redistribution not checked (MACE-OFF23 test split, SPICE-derived): keep local
+data/ood/off23_test_sample300.xyz
+output/*/lightning/*/hparams.yaml
+output/*/ood_pool.npz

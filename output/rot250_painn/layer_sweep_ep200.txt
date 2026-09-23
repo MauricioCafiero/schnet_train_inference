@@ -1,0 +1,39 @@
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+scored valid: 25 structures
+scored rot1: 221 structures
+scored rod: 4 structures
+scored wheel: 4 structures
+scored dethread: 10 structures
+scored S66: 132 structures
+scored OFF23: 153 structures
+
+rot1 per-frame errors: force MAE 73-488 meV/A, |dE| 1.64-17.41 meV/atom
+
+ratio = median(set score) / max(held-out score);  AUROC held-out vs set;  rho = Spearman(score, error) on rot1
+layer         valid max    r:rot1    r:rod  r:wheelr:dethread    r:S66  r:OFF23   auc:rot1    auc:rod  auc:wheel    auc:S66  rho F  rho E
+emb              0.0000       1.0      0.7      0.9      0.6      2.1      1.6       0.33       0.00       0.00       0.85   0.04   0.06
+emb-c           -0.0000       nan      nan      nan      nan      nan      nan       0.33       1.00       0.00       0.11   0.04   0.06
+int1             0.0001       1.4      4.4      3.5      3.9     14.8     15.5       1.00       1.00       1.00       1.00   0.74   0.83
+int1-c           0.0296       1.3      2.0      4.5      4.1      7.2      7.6       0.99       1.00       1.00       1.00   0.73   0.80
+mix1             0.0002       1.5      4.2      3.2      3.4     13.2     14.0       1.00       1.00       1.00       1.00   0.76   0.84
+mix1-c           0.0339       1.3      2.0      3.8      3.5      6.7      7.0       0.99       1.00       1.00       1.00   0.75   0.82
+vnorm1           0.0064       1.5      2.8      2.4      2.6      8.1      8.4       0.99       1.00       1.00       1.00   0.77   0.86
+vnorm1-c         0.0629       1.3      1.6      2.2      2.1      4.2      4.9       0.99       1.00       1.00       0.91   0.78   0.84
+int2             0.0003       1.4      4.7      3.3      3.7     12.4     13.8       1.00       1.00       1.00       1.00   0.75   0.84
+int2-c           0.0336       1.3      2.1      4.0      3.8      6.5      7.2       0.99       1.00       1.00       1.00   0.75   0.82
+mix2             0.0006       1.6      3.6      2.8      3.0     10.0     11.4       0.99       1.00       1.00       1.00   0.79   0.81
+mix2-c           0.0487       1.4      1.8      3.1      2.9      5.2      5.6       0.99       1.00       1.00       1.00   0.75   0.84
+vnorm2           0.0140       1.4      2.0      1.9      2.1      5.5      5.0       0.99       1.00       1.00       1.00   0.76   0.86
+vnorm2-c         0.1029       1.3      1.7      1.8      1.9      3.4      3.8       0.99       1.00       1.00       0.90   0.75   0.84
+int3             0.0007       1.6      3.8      2.9      3.1     10.1     11.7       0.99       1.00       1.00       1.00   0.78   0.82
+int3-c           0.0468       1.3      1.8      3.2      3.0      5.2      5.6       0.99       1.00       1.00       1.00   0.75   0.83
+mix3             0.0020       1.8      2.4      2.1      2.2      6.5      9.1       0.99       1.00       1.00       1.00   0.78   0.84
+mix3-c           0.0780       1.3      1.5      2.1      2.0      3.4      3.7       0.99       1.00       1.00       1.00   0.74   0.84
+vnorm3           0.0175       1.4      1.8      1.9      2.0      4.4      4.2       0.99       1.00       1.00       1.00   0.76   0.85
+vnorm3-c         0.1179       1.3      1.4      1.7      1.7      2.8      3.1       0.99       1.00       1.00       0.93   0.75   0.83
+readout          0.0011       1.9      2.5      1.9      2.1      7.1     18.7       0.98       1.00       1.00       1.00   0.70   0.65
+readout-c        0.0459       1.3      1.7      2.2      2.0      3.6      3.6       0.98       1.00       1.00       1.00   0.72   0.81
+eps_z            0.8714       1.2      1.4      1.0      1.1      2.0      3.2       0.97       1.00       0.75       0.93   0.65   0.72
+
+wrote ../output/rot250_painn/layer_sweep.json

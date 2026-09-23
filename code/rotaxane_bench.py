@@ -78,8 +78,8 @@ def _eint(d, calc):
 
 
 def run(models, cutoff, sets=("stacking", "whole")):
-    """models: {name: path to a SchNetPack best_model}. Cached in OUT; delete
-    an entry there to rescore a retrained model under the same name."""
+    """models: {name: path to a SchNetPack best_model}. Always rescored (a
+    resumed run keeps its name); results are stored in OUT."""
     res = json.loads(OUT.read_text()) if OUT.exists() else {}
     for name, path in models.items():
         calc = None
@@ -89,7 +89,7 @@ def run(models, cutoff, sets=("stacking", "whole")):
             res.setdefault(sub, {}).setdefault(name, {})
             for key in ref:
                 d = _BENCH / sub / key
-                if not d.exists() or key in res[sub][name]:
+                if not d.exists():
                     continue
                 calc = calc or _calc(path, cutoff)
                 res[sub][name][key] = _eint(d, calc)

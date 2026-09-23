@@ -12,21 +12,20 @@
   "features": 128,
   "interactions": 3,
   "cutoff": 5.0,
-  "epochs": 400,
+  "epochs": 200,
   "batch_size": 4,
   "micro_batch": null,
   "lr": 0.0005,
   "energy_weight": 0.05,
   "device": "cpu",
   "seed": 123,
-  "max_steps": -1,
-  "resume": true
+  "max_steps": -1
  },
  "n_train": 225,
  "n_valid": 25,
- "epochs_run": 298,
- "wall_s": 2681.0,
- "valid_energy_mae_meV_per_atom": 0.5303160908377119,
- "valid_forces_mae_meV_per_A": 59.81362269674026,
+ "epochs_run": 200,
+ "wall_s": 4909.8,
+ "valid_energy_mae_meV_per_atom": 0.501010306615323,
+ "valid_forces_mae_meV_per_A": 60.74630765954802,
  "n_params": 589057
 }

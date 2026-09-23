@@ -11,18 +11,23 @@ PY=$REPO/.venv/bin/python
 NAME=${NAME:-rot250_painn}
 DEVICE=${DEVICE:-cpu}
 EPOCHS=${EPOCHS:-500}
+RESUME=${RESUME:-0}            # RESUME=1: continue this run from last.ckpt up to EPOCHS (total)
 
 caffeinate -i -w $$ &          # hold off idle sleep for the whole run
 export KMP_DUPLICATE_LIB_OK=TRUE
 cd $REPO/code
-echo "== start $(date)  name=$NAME device=$DEVICE epochs=$EPOCHS"
+echo "== start $(date)  name=$NAME device=$DEVICE epochs=$EPOCHS resume=$RESUME"
 
-# training is skipped if this run already finished (metrics.json present)
-if [[ ! -f $REPO/output/$NAME/metrics.json ]]; then
+# training is skipped if this run already finished (metrics.json present), unless resuming
+if [[ $RESUME == 1 ]]; then
+  $PY train_spk.py --train ../data/rot250_gfn2_train.xyz --valid ../data/rot250_gfn2_valid.xyz \
+      --name $NAME --model painn --device $DEVICE --epochs $EPOCHS --resume
+elif [[ ! -f $REPO/output/$NAME/metrics.json ]]; then
   $PY train_spk.py --train ../data/rot250_gfn2_train.xyz --valid ../data/rot250_gfn2_valid.xyz \
       --name $NAME --model painn --device $DEVICE --epochs $EPOCHS
 fi
 
 $PY rotaxane_bench.py --spk-model $NAME=$REPO/output/$NAME/best_model \
     | tee $REPO/output/$NAME/bench.txt
+$PY ood_spk.py $REPO/output/$NAME/best_model | tee $REPO/output/$NAME/ood.txt
 echo "== done $(date)"
