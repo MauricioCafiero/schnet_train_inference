@@ -1,0 +1,1493 @@
+== start Wed 23 Sep 2026 15:40:24 BST  name=rot250_painn device=cpu epochs=200
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Seed set to 123
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/pytorch_lightning/utilities/parsing.py:213: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+GPU available: True (mps), used: False
+TPU available: False, using: 0 TPU cores
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/setup.py:175: GPU available but not used. You can set it by doing `Trainer(accelerator='gpu')`.
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+┏━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name    ┃ Type                   ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ model   │ NeuralNetworkPotential │  589 K │ train │     0 │
+│ 1 │ outputs │ ModuleList             │      0 │ train │     0 │
+└───┴─────────┴────────────────────────┴────────┴───────┴───────┘
+Trainable params: 589 K                                                         
+Non-trainable params: 0                                                         
+Total params: 589 K                                                             
+Total estimated model params size (MB): 2.356                                   
+Modules in train mode: 74                                                       
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/pytorch_lightning/core/saving.py:398: Skipping 'outputs' parameter because it is not possible to safely dump to YAML.
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=5` in the `DataLoader` to improve performance.
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=5` in the `DataLoader` to improve performance.
+step      1  rss  1.29 GB  mps  0.00 GB
+step     11  rss  1.82 GB  mps  0.00 GB
+step     21  rss  1.58 GB  mps  0.00 GB
+step     31  rss  1.87 GB  mps  0.00 GB
+step     41  rss  1.87 GB  mps  0.00 GB
+step     51  rss  1.56 GB  mps  0.00 GB
+epoch 0 train time 24.6 s
+step     58  rss  1.59 GB  mps  0.00 GB
+step     68  rss  1.59 GB  mps  0.00 GB
+step     78  rss  1.26 GB  mps  0.00 GB
+step     88  rss  1.92 GB  mps  0.00 GB
+step     98  rss  1.93 GB  mps  0.00 GB
+step    108  rss  1.96 GB  mps  0.00 GB
+epoch 1 train time 24.1 s
+step    115  rss  1.68 GB  mps  0.00 GB
+step    125  rss  1.68 GB  mps  0.00 GB
+step    135  rss  1.68 GB  mps  0.00 GB
+step    145  rss  1.68 GB  mps  0.00 GB
+step    155  rss  1.68 GB  mps  0.00 GB
+step    165  rss  1.78 GB  mps  0.00 GB
+epoch 2 train time 23.1 s
+step    172  rss  1.20 GB  mps  0.00 GB
+step    182  rss  1.59 GB  mps  0.00 GB
+step    192  rss  1.90 GB  mps  0.00 GB
+step    202  rss  1.97 GB  mps  0.00 GB
+step    212  rss  1.97 GB  mps  0.00 GB
+step    222  rss  1.97 GB  mps  0.00 GB
+epoch 3 train time 25.9 s
+step    229  rss  1.54 GB  mps  0.00 GB
+step    239  rss  1.55 GB  mps  0.00 GB
+step    249  rss  1.92 GB  mps  0.00 GB
+step    259  rss  1.98 GB  mps  0.00 GB
+step    269  rss  1.95 GB  mps  0.00 GB
+step    279  rss  1.96 GB  mps  0.00 GB
+epoch 4 train time 23.9 s
+step    286  rss  1.67 GB  mps  0.00 GB
+step    296  rss  1.98 GB  mps  0.00 GB
+step    306  rss  1.98 GB  mps  0.00 GB
+step    316  rss  1.98 GB  mps  0.00 GB
+step    326  rss  1.66 GB  mps  0.00 GB
+step    336  rss  1.73 GB  mps  0.00 GB
+epoch 5 train time 23.3 s
+step    343  rss  1.69 GB  mps  0.00 GB
+step    353  rss  1.70 GB  mps  0.00 GB
+step    363  rss  1.70 GB  mps  0.00 GB
+step    373  rss  1.70 GB  mps  0.00 GB
+step    383  rss  1.70 GB  mps  0.00 GB
+step    393  rss  1.46 GB  mps  0.00 GB
+epoch 6 train time 23.7 s
+step    400  rss  1.61 GB  mps  0.00 GB
+step    410  rss  1.70 GB  mps  0.00 GB
+step    420  rss  1.70 GB  mps  0.00 GB
+step    430  rss  1.85 GB  mps  0.00 GB
+step    440  rss  1.85 GB  mps  0.00 GB
+step    450  rss  1.85 GB  mps  0.00 GB
+epoch 7 train time 25.8 s
+step    457  rss  1.57 GB  mps  0.00 GB
+step    467  rss  1.57 GB  mps  0.00 GB
+step    477  rss  1.63 GB  mps  0.00 GB
+step    487  rss  1.63 GB  mps  0.00 GB
+step    497  rss  1.69 GB  mps  0.00 GB
+step    507  rss  1.87 GB  mps  0.00 GB
+epoch 8 train time 26.2 s
+step    514  rss  1.20 GB  mps  0.00 GB
+step    524  rss  1.21 GB  mps  0.00 GB
+step    534  rss  1.50 GB  mps  0.00 GB
+step    544  rss  1.45 GB  mps  0.00 GB
+step    554  rss  1.40 GB  mps  0.00 GB
+step    564  rss  1.75 GB  mps  0.00 GB
+epoch 9 train time 28.8 s
+step    571  rss  1.56 GB  mps  0.00 GB
+step    581  rss  1.90 GB  mps  0.00 GB
+step    591  rss  1.93 GB  mps  0.00 GB
+step    601  rss  1.93 GB  mps  0.00 GB
+step    611  rss  1.91 GB  mps  0.00 GB
+step    621  rss  1.91 GB  mps  0.00 GB
+epoch 10 train time 25.5 s
+step    628  rss  1.50 GB  mps  0.00 GB
+step    638  rss  1.50 GB  mps  0.00 GB
+step    648  rss  1.50 GB  mps  0.00 GB
+step    658  rss  1.87 GB  mps  0.00 GB
+step    668  rss  1.80 GB  mps  0.00 GB
+step    678  rss  1.80 GB  mps  0.00 GB
+epoch 11 train time 24.3 s
+step    685  rss  1.59 GB  mps  0.00 GB
+step    695  rss  1.84 GB  mps  0.00 GB
+step    705  rss  1.84 GB  mps  0.00 GB
+step    715  rss  1.84 GB  mps  0.00 GB
+step    725  rss  2.03 GB  mps  0.00 GB
+step    735  rss  2.03 GB  mps  0.00 GB
+epoch 12 train time 23.5 s
+step    742  rss  1.77 GB  mps  0.00 GB
+step    752  rss  1.77 GB  mps  0.00 GB
+step    762  rss  1.77 GB  mps  0.00 GB
+step    772  rss  1.77 GB  mps  0.00 GB
+step    782  rss  2.01 GB  mps  0.00 GB
+step    792  rss  2.07 GB  mps  0.00 GB
+epoch 13 train time 23.5 s
+step    799  rss  1.81 GB  mps  0.00 GB
+step    809  rss  1.81 GB  mps  0.00 GB
+step    819  rss  1.81 GB  mps  0.00 GB
+step    829  rss  2.05 GB  mps  0.00 GB
+step    839  rss  2.06 GB  mps  0.00 GB
+step    849  rss  2.06 GB  mps  0.00 GB
+epoch 14 train time 23.5 s
+step    856  rss  1.56 GB  mps  0.00 GB
+step    866  rss  1.91 GB  mps  0.00 GB
+step    876  rss  1.61 GB  mps  0.00 GB
+step    886  rss  1.62 GB  mps  0.00 GB
+step    896  rss  1.98 GB  mps  0.00 GB
+step    906  rss  1.65 GB  mps  0.00 GB
+epoch 15 train time 23.4 s
+step    913  rss  1.57 GB  mps  0.00 GB
+step    923  rss  1.58 GB  mps  0.00 GB
+step    933  rss  1.58 GB  mps  0.00 GB
+step    943  rss  1.58 GB  mps  0.00 GB
+step    953  rss  1.84 GB  mps  0.00 GB
+step    963  rss  1.96 GB  mps  0.00 GB
+epoch 16 train time 23.8 s
+step    970  rss  1.78 GB  mps  0.00 GB
+step    980  rss  1.78 GB  mps  0.00 GB
+step    990  rss  1.78 GB  mps  0.00 GB
+step   1000  rss  1.78 GB  mps  0.00 GB
+step   1010  rss  1.68 GB  mps  0.00 GB
+step   1020  rss  1.68 GB  mps  0.00 GB
+epoch 17 train time 23.2 s
+step   1027  rss  1.23 GB  mps  0.00 GB
+step   1037  rss  1.36 GB  mps  0.00 GB
+step   1047  rss  1.37 GB  mps  0.00 GB
+step   1057  rss  1.59 GB  mps  0.00 GB
+step   1067  rss  1.80 GB  mps  0.00 GB
+step   1077  rss  1.92 GB  mps  0.00 GB
+epoch 18 train time 23.4 s
+step   1084  rss  1.64 GB  mps  0.00 GB
+step   1094  rss  1.74 GB  mps  0.00 GB
+step   1104  rss  1.91 GB  mps  0.00 GB
+step   1114  rss  1.91 GB  mps  0.00 GB
+step   1124  rss  1.91 GB  mps  0.00 GB
+step   1134  rss  1.91 GB  mps  0.00 GB
+epoch 19 train time 24.3 s
+step   1141  rss  1.51 GB  mps  0.00 GB
+step   1151  rss  1.92 GB  mps  0.00 GB
+step   1161  rss  1.92 GB  mps  0.00 GB
+step   1171  rss  1.92 GB  mps  0.00 GB
+step   1181  rss  1.92 GB  mps  0.00 GB
+step   1191  rss  1.92 GB  mps  0.00 GB
+epoch 20 train time 23.8 s
+step   1198  rss  1.43 GB  mps  0.00 GB
+step   1208  rss  1.75 GB  mps  0.00 GB
+step   1218  rss  1.62 GB  mps  0.00 GB
+step   1228  rss  1.70 GB  mps  0.00 GB
+step   1238  rss  1.70 GB  mps  0.00 GB
+step   1248  rss  1.70 GB  mps  0.00 GB
+epoch 21 train time 24.8 s
+step   1255  rss  1.48 GB  mps  0.00 GB
+step   1265  rss  1.86 GB  mps  0.00 GB
+step   1275  rss  1.84 GB  mps  0.00 GB
+step   1285  rss  1.81 GB  mps  0.00 GB
+step   1295  rss  1.92 GB  mps  0.00 GB
+step   1305  rss  1.92 GB  mps  0.00 GB
+epoch 22 train time 24.8 s
+step   1312  rss  1.55 GB  mps  0.00 GB
+step   1322  rss  1.60 GB  mps  0.00 GB
+step   1332  rss  1.60 GB  mps  0.00 GB
+step   1342  rss  1.91 GB  mps  0.00 GB
+step   1352  rss  1.93 GB  mps  0.00 GB
+step   1362  rss  1.93 GB  mps  0.00 GB
+epoch 23 train time 25.6 s
+step   1369  rss  1.44 GB  mps  0.00 GB
+step   1379  rss  1.81 GB  mps  0.00 GB
+step   1389  rss  1.97 GB  mps  0.00 GB
+step   1399  rss  1.97 GB  mps  0.00 GB
+step   1409  rss  1.97 GB  mps  0.00 GB
+step   1419  rss  1.97 GB  mps  0.00 GB
+epoch 24 train time 25.5 s
+step   1426  rss  1.57 GB  mps  0.00 GB
+step   1436  rss  1.57 GB  mps  0.00 GB
+step   1446  rss  1.86 GB  mps  0.00 GB
+step   1456  rss  1.84 GB  mps  0.00 GB
+step   1466  rss  1.91 GB  mps  0.00 GB
+step   1476  rss  1.91 GB  mps  0.00 GB
+epoch 25 train time 25.4 s
+step   1483  rss  1.65 GB  mps  0.00 GB
+step   1493  rss  1.90 GB  mps  0.00 GB
+step   1503  rss  1.19 GB  mps  0.00 GB
+step   1513  rss  1.17 GB  mps  0.00 GB
+step   1523  rss  1.81 GB  mps  0.00 GB
+step   1533  rss  1.65 GB  mps  0.00 GB
+epoch 26 train time 26.2 s
+step   1540  rss  1.63 GB  mps  0.00 GB
+step   1550  rss  1.64 GB  mps  0.00 GB
+step   1560  rss  1.64 GB  mps  0.00 GB
+step   1570  rss  1.21 GB  mps  0.00 GB
+step   1580  rss  1.78 GB  mps  0.00 GB
+step   1590  rss  1.19 GB  mps  0.00 GB
+epoch 27 train time 26.6 s
+step   1597  rss  1.23 GB  mps  0.00 GB
+step   1607  rss  1.24 GB  mps  0.00 GB
+step   1617  rss  1.24 GB  mps  0.00 GB
+step   1627  rss  1.24 GB  mps  0.00 GB
+step   1637  rss  1.63 GB  mps  0.00 GB
+step   1647  rss  1.63 GB  mps  0.00 GB
+epoch 28 train time 26.8 s
+step   1654  rss  1.64 GB  mps  0.00 GB
+step   1664  rss  1.64 GB  mps  0.00 GB
+step   1674  rss  1.64 GB  mps  0.00 GB
+step   1684  rss  1.62 GB  mps  0.00 GB
+step   1694  rss  1.61 GB  mps  0.00 GB
+step   1704  rss  1.61 GB  mps  0.00 GB
+epoch 29 train time 27.1 s
+step   1711  rss  1.07 GB  mps  0.00 GB
+step   1721  rss  1.52 GB  mps  0.00 GB
+step   1731  rss  1.52 GB  mps  0.00 GB
+step   1741  rss  1.52 GB  mps  0.00 GB
+step   1751  rss  1.52 GB  mps  0.00 GB
+step   1761  rss  1.18 GB  mps  0.00 GB
+epoch 30 train time 28.2 s
+step   1768  rss  1.64 GB  mps  0.00 GB
+step   1778  rss  1.64 GB  mps  0.00 GB
+step   1788  rss  1.64 GB  mps  0.00 GB
+step   1798  rss  1.65 GB  mps  0.00 GB
+step   1808  rss  1.64 GB  mps  0.00 GB
+step   1818  rss  1.64 GB  mps  0.00 GB
+epoch 31 train time 26.8 s
+step   1825  rss  1.63 GB  mps  0.00 GB
+step   1835  rss  1.58 GB  mps  0.00 GB
+step   1845  rss  1.61 GB  mps  0.00 GB
+step   1855  rss  1.61 GB  mps  0.00 GB
+step   1865  rss  1.54 GB  mps  0.00 GB
+step   1875  rss  1.51 GB  mps  0.00 GB
+epoch 32 train time 26.6 s
+step   1882  rss  1.61 GB  mps  0.00 GB
+step   1892  rss  1.61 GB  mps  0.00 GB
+step   1902  rss  1.60 GB  mps  0.00 GB
+step   1912  rss  1.61 GB  mps  0.00 GB
+step   1922  rss  1.61 GB  mps  0.00 GB
+step   1932  rss  1.61 GB  mps  0.00 GB
+epoch 33 train time 26.5 s
+step   1939  rss  1.60 GB  mps  0.00 GB
+step   1949  rss  1.49 GB  mps  0.00 GB
+step   1959  rss  1.49 GB  mps  0.00 GB
+step   1969  rss  1.49 GB  mps  0.00 GB
+step   1979  rss  1.92 GB  mps  0.00 GB
+step   1989  rss  1.93 GB  mps  0.00 GB
+epoch 34 train time 24.9 s
+step   1996  rss  1.53 GB  mps  0.00 GB
+step   2006  rss  1.53 GB  mps  0.00 GB
+step   2016  rss  1.63 GB  mps  0.00 GB
+step   2026  rss  1.63 GB  mps  0.00 GB
+step   2036  rss  1.63 GB  mps  0.00 GB
+step   2046  rss  1.63 GB  mps  0.00 GB
+epoch 35 train time 23.9 s
+step   2053  rss  1.32 GB  mps  0.00 GB
+step   2063  rss  1.32 GB  mps  0.00 GB
+step   2073  rss  1.31 GB  mps  0.00 GB
+step   2083  rss  1.31 GB  mps  0.00 GB
+step   2093  rss  1.59 GB  mps  0.00 GB
+step   2103  rss  1.29 GB  mps  0.00 GB
+epoch 36 train time 24.7 s
+step   2110  rss  1.38 GB  mps  0.00 GB
+step   2120  rss  1.36 GB  mps  0.00 GB
+step   2130  rss  1.93 GB  mps  0.00 GB
+step   2140  rss  1.93 GB  mps  0.00 GB
+step   2150  rss  1.93 GB  mps  0.00 GB
+step   2160  rss  1.93 GB  mps  0.00 GB
+epoch 37 train time 25.4 s
+step   2167  rss  1.59 GB  mps  0.00 GB
+step   2177  rss  1.93 GB  mps  0.00 GB
+step   2187  rss  1.93 GB  mps  0.00 GB
+step   2197  rss  1.93 GB  mps  0.00 GB
+step   2207  rss  1.69 GB  mps  0.00 GB
+step   2217  rss  1.70 GB  mps  0.00 GB
+epoch 38 train time 25.5 s
+step   2224  rss  1.60 GB  mps  0.00 GB
+step   2234  rss  1.87 GB  mps  0.00 GB
+step   2244  rss  1.87 GB  mps  0.00 GB
+step   2254  rss  1.87 GB  mps  0.00 GB
+step   2264  rss  1.87 GB  mps  0.00 GB
+step   2274  rss  1.67 GB  mps  0.00 GB
+epoch 39 train time 24.7 s
+step   2281  rss  1.64 GB  mps  0.00 GB
+step   2291  rss  1.64 GB  mps  0.00 GB
+step   2301  rss  1.12 GB  mps  0.00 GB
+step   2311  rss  1.81 GB  mps  0.00 GB
+step   2321  rss  1.81 GB  mps  0.00 GB
+step   2331  rss  1.20 GB  mps  0.00 GB
+epoch 40 train time 26.7 s
+step   2338  rss  1.44 GB  mps  0.00 GB
+step   2348  rss  1.93 GB  mps  0.00 GB
+step   2358  rss  1.93 GB  mps  0.00 GB
+step   2368  rss  1.92 GB  mps  0.00 GB
+step   2378  rss  1.90 GB  mps  0.00 GB
+step   2388  rss  1.90 GB  mps  0.00 GB
+epoch 41 train time 25.1 s
+step   2395  rss  1.54 GB  mps  0.00 GB
+step   2405  rss  1.54 GB  mps  0.00 GB
+step   2415  rss  1.54 GB  mps  0.00 GB
+step   2425  rss  1.54 GB  mps  0.00 GB
+step   2435  rss  1.20 GB  mps  0.00 GB
+step   2445  rss  1.41 GB  mps  0.00 GB
+epoch 42 train time 27.2 s
+step   2452  rss  1.34 GB  mps  0.00 GB
+step   2462  rss  1.19 GB  mps  0.00 GB
+step   2472  rss  1.64 GB  mps  0.00 GB
+step   2482  rss  1.64 GB  mps  0.00 GB
+step   2492  rss  1.64 GB  mps  0.00 GB
+step   2502  rss  1.64 GB  mps  0.00 GB
+epoch 43 train time 25.0 s
+step   2509  rss  1.59 GB  mps  0.00 GB
+step   2519  rss  1.59 GB  mps  0.00 GB
+step   2529  rss  1.59 GB  mps  0.00 GB
+step   2539  rss  1.11 GB  mps  0.00 GB
+step   2549  rss  1.11 GB  mps  0.00 GB
+step   2559  rss  1.19 GB  mps  0.00 GB
+epoch 44 train time 24.4 s
+step   2566  rss  1.32 GB  mps  0.00 GB
+step   2576  rss  1.57 GB  mps  0.00 GB
+step   2586  rss  1.57 GB  mps  0.00 GB
+step   2596  rss  1.92 GB  mps  0.00 GB
+step   2606  rss  1.92 GB  mps  0.00 GB
+step   2616  rss  1.29 GB  mps  0.00 GB
+epoch 45 train time 24.4 s
+step   2623  rss  1.33 GB  mps  0.00 GB
+step   2633  rss  1.13 GB  mps  0.00 GB
+step   2643  rss  1.41 GB  mps  0.00 GB
+step   2653  rss  1.85 GB  mps  0.00 GB
+step   2663  rss  1.29 GB  mps  0.00 GB
+step   2673  rss  1.88 GB  mps  0.00 GB
+epoch 46 train time 24.9 s
+step   2680  rss  1.51 GB  mps  0.00 GB
+step   2690  rss  1.52 GB  mps  0.00 GB
+step   2700  rss  1.52 GB  mps  0.00 GB
+step   2710  rss  1.52 GB  mps  0.00 GB
+step   2720  rss  1.83 GB  mps  0.00 GB
+step   2730  rss  1.83 GB  mps  0.00 GB
+epoch 47 train time 23.9 s
+step   2737  rss  1.59 GB  mps  0.00 GB
+step   2747  rss  1.61 GB  mps  0.00 GB
+step   2757  rss  1.61 GB  mps  0.00 GB
+step   2767  rss  1.92 GB  mps  0.00 GB
+step   2777  rss  1.93 GB  mps  0.00 GB
+step   2787  rss  1.93 GB  mps  0.00 GB
+epoch 48 train time 24.2 s
+step   2794  rss  1.50 GB  mps  0.00 GB
+step   2804  rss  1.50 GB  mps  0.00 GB
+step   2814  rss  1.35 GB  mps  0.00 GB
+step   2824  rss  1.43 GB  mps  0.00 GB
+step   2834  rss  1.85 GB  mps  0.00 GB
+step   2844  rss  1.91 GB  mps  0.00 GB
+epoch 49 train time 24.5 s
+step   2851  rss  1.59 GB  mps  0.00 GB
+step   2861  rss  1.59 GB  mps  0.00 GB
+step   2871  rss  1.59 GB  mps  0.00 GB
+step   2881  rss  1.50 GB  mps  0.00 GB
+step   2891  rss  1.94 GB  mps  0.00 GB
+step   2901  rss  1.95 GB  mps  0.00 GB
+epoch 50 train time 24.5 s
+step   2908  rss  1.49 GB  mps  0.00 GB
+step   2918  rss  1.49 GB  mps  0.00 GB
+step   2928  rss  1.49 GB  mps  0.00 GB
+step   2938  rss  1.68 GB  mps  0.00 GB
+step   2948  rss  1.68 GB  mps  0.00 GB
+step   2958  rss  1.68 GB  mps  0.00 GB
+epoch 51 train time 23.3 s
+step   2965  rss  1.45 GB  mps  0.00 GB
+step   2975  rss  1.45 GB  mps  0.00 GB
+step   2985  rss  1.40 GB  mps  0.00 GB
+step   2995  rss  1.40 GB  mps  0.00 GB
+step   3005  rss  1.58 GB  mps  0.00 GB
+step   3015  rss  2.07 GB  mps  0.00 GB
+epoch 52 train time 23.5 s
+step   3022  rss  1.56 GB  mps  0.00 GB
+step   3032  rss  1.85 GB  mps  0.00 GB
+step   3042  rss  1.85 GB  mps  0.00 GB
+step   3052  rss  1.85 GB  mps  0.00 GB
+step   3062  rss  1.92 GB  mps  0.00 GB
+step   3072  rss  1.92 GB  mps  0.00 GB
+epoch 53 train time 23.9 s
+step   3079  rss  1.41 GB  mps  0.00 GB
+step   3089  rss  1.86 GB  mps  0.00 GB
+step   3099  rss  1.38 GB  mps  0.00 GB
+step   3109  rss  1.93 GB  mps  0.00 GB
+step   3119  rss  1.64 GB  mps  0.00 GB
+step   3129  rss  1.89 GB  mps  0.00 GB
+epoch 54 train time 24.0 s
+step   3136  rss  1.68 GB  mps  0.00 GB
+step   3146  rss  1.52 GB  mps  0.00 GB
+step   3156  rss  1.52 GB  mps  0.00 GB
+step   3166  rss  1.61 GB  mps  0.00 GB
+step   3176  rss  1.61 GB  mps  0.00 GB
+step   3186  rss  1.61 GB  mps  0.00 GB
+epoch 55 train time 23.8 s
+step   3193  rss  1.59 GB  mps  0.00 GB
+step   3203  rss  1.59 GB  mps  0.00 GB
+step   3213  rss  1.59 GB  mps  0.00 GB
+step   3223  rss  1.90 GB  mps  0.00 GB
+step   3233  rss  1.92 GB  mps  0.00 GB
+step   3243  rss  1.92 GB  mps  0.00 GB
+epoch 56 train time 24.1 s
+step   3250  rss  1.47 GB  mps  0.00 GB
+step   3260  rss  1.47 GB  mps  0.00 GB
+step   3270  rss  1.73 GB  mps  0.00 GB
+step   3280  rss  1.73 GB  mps  0.00 GB
+step   3290  rss  1.73 GB  mps  0.00 GB
+step   3300  rss  1.73 GB  mps  0.00 GB
+epoch 57 train time 23.8 s
+step   3307  rss  1.57 GB  mps  0.00 GB
+step   3317  rss  1.24 GB  mps  0.00 GB
+step   3327  rss  1.24 GB  mps  0.00 GB
+step   3337  rss  1.33 GB  mps  0.00 GB
+step   3347  rss  1.33 GB  mps  0.00 GB
+step   3357  rss  1.33 GB  mps  0.00 GB
+epoch 58 train time 23.7 s
+step   3364  rss  1.37 GB  mps  0.00 GB
+step   3374  rss  1.38 GB  mps  0.00 GB
+step   3384  rss  1.69 GB  mps  0.00 GB
+step   3394  rss  1.69 GB  mps  0.00 GB
+step   3404  rss  1.69 GB  mps  0.00 GB
+step   3414  rss  1.86 GB  mps  0.00 GB
+epoch 59 train time 24.4 s
+step   3421  rss  1.62 GB  mps  0.00 GB
+step   3431  rss  1.48 GB  mps  0.00 GB
+step   3441  rss  1.53 GB  mps  0.00 GB
+step   3451  rss  1.53 GB  mps  0.00 GB
+step   3461  rss  1.53 GB  mps  0.00 GB
+step   3471  rss  1.53 GB  mps  0.00 GB
+epoch 60 train time 23.4 s
+step   3478  rss  1.47 GB  mps  0.00 GB
+step   3488  rss  1.47 GB  mps  0.00 GB
+step   3498  rss  1.69 GB  mps  0.00 GB
+step   3508  rss  1.88 GB  mps  0.00 GB
+step   3518  rss  1.90 GB  mps  0.00 GB
+step   3528  rss  1.90 GB  mps  0.00 GB
+epoch 61 train time 24.2 s
+step   3535  rss  1.39 GB  mps  0.00 GB
+step   3545  rss  1.39 GB  mps  0.00 GB
+step   3555  rss  1.51 GB  mps  0.00 GB
+step   3565  rss  1.51 GB  mps  0.00 GB
+step   3575  rss  1.92 GB  mps  0.00 GB
+step   3585  rss  1.92 GB  mps  0.00 GB
+epoch 62 train time 24.5 s
+step   3592  rss  1.44 GB  mps  0.00 GB
+step   3602  rss  1.93 GB  mps  0.00 GB
+step   3612  rss  1.93 GB  mps  0.00 GB
+step   3622  rss  1.59 GB  mps  0.00 GB
+step   3632  rss  1.60 GB  mps  0.00 GB
+step   3642  rss  1.60 GB  mps  0.00 GB
+epoch 63 train time 23.3 s
+step   3649  rss  1.30 GB  mps  0.00 GB
+step   3659  rss  1.33 GB  mps  0.00 GB
+step   3669  rss  1.33 GB  mps  0.00 GB
+step   3679  rss  1.33 GB  mps  0.00 GB
+step   3689  rss  1.35 GB  mps  0.00 GB
+step   3699  rss  1.59 GB  mps  0.00 GB
+epoch 64 train time 23.3 s
+step   3706  rss  1.67 GB  mps  0.00 GB
+step   3716  rss  1.65 GB  mps  0.00 GB
+step   3726  rss  1.66 GB  mps  0.00 GB
+step   3736  rss  1.86 GB  mps  0.00 GB
+step   3746  rss  1.39 GB  mps  0.00 GB
+step   3756  rss  1.90 GB  mps  0.00 GB
+epoch 65 train time 24.7 s
+step   3763  rss  1.53 GB  mps  0.00 GB
+step   3773  rss  1.90 GB  mps  0.00 GB
+step   3783  rss  1.91 GB  mps  0.00 GB
+step   3793  rss  1.92 GB  mps  0.00 GB
+step   3803  rss  1.93 GB  mps  0.00 GB
+step   3813  rss  1.93 GB  mps  0.00 GB
+epoch 66 train time 24.6 s
+step   3820  rss  1.64 GB  mps  0.00 GB
+step   3830  rss  1.64 GB  mps  0.00 GB
+step   3840  rss  1.69 GB  mps  0.00 GB
+step   3850  rss  1.86 GB  mps  0.00 GB
+step   3860  rss  1.53 GB  mps  0.00 GB
+step   3870  rss  1.63 GB  mps  0.00 GB
+epoch 67 train time 24.5 s
+step   3877  rss  1.57 GB  mps  0.00 GB
+step   3887  rss  1.71 GB  mps  0.00 GB
+step   3897  rss  1.92 GB  mps  0.00 GB
+step   3907  rss  1.92 GB  mps  0.00 GB
+step   3917  rss  1.82 GB  mps  0.00 GB
+step   3927  rss  1.81 GB  mps  0.00 GB
+epoch 68 train time 25.3 s
+step   3934  rss  1.63 GB  mps  0.00 GB
+step   3944  rss  1.76 GB  mps  0.00 GB
+step   3954  rss  1.74 GB  mps  0.00 GB
+step   3964  rss  1.88 GB  mps  0.00 GB
+step   3974  rss  1.88 GB  mps  0.00 GB
+step   3984  rss  1.88 GB  mps  0.00 GB
+epoch 69 train time 23.9 s
+step   3991  rss  1.63 GB  mps  0.00 GB
+step   4001  rss  1.63 GB  mps  0.00 GB
+step   4011  rss  1.92 GB  mps  0.00 GB
+step   4021  rss  1.81 GB  mps  0.00 GB
+step   4031  rss  1.81 GB  mps  0.00 GB
+step   4041  rss  1.93 GB  mps  0.00 GB
+epoch 70 train time 25.3 s
+step   4048  rss  1.47 GB  mps  0.00 GB
+step   4058  rss  1.63 GB  mps  0.00 GB
+step   4068  rss  1.71 GB  mps  0.00 GB
+step   4078  rss  1.93 GB  mps  0.00 GB
+step   4088  rss  1.93 GB  mps  0.00 GB
+step   4098  rss  1.93 GB  mps  0.00 GB
+epoch 71 train time 24.4 s
+step   4105  rss  1.63 GB  mps  0.00 GB
+step   4115  rss  1.63 GB  mps  0.00 GB
+step   4125  rss  1.26 GB  mps  0.00 GB
+step   4135  rss  1.26 GB  mps  0.00 GB
+step   4145  rss  1.12 GB  mps  0.00 GB
+step   4155  rss  1.75 GB  mps  0.00 GB
+epoch 72 train time 23.4 s
+step   4162  rss  1.69 GB  mps  0.00 GB
+step   4172  rss  1.92 GB  mps  0.00 GB
+step   4182  rss  1.93 GB  mps  0.00 GB
+step   4192  rss  1.90 GB  mps  0.00 GB
+step   4202  rss  1.90 GB  mps  0.00 GB
+step   4212  rss  1.90 GB  mps  0.00 GB
+epoch 73 train time 25.7 s
+step   4219  rss  1.56 GB  mps  0.00 GB
+step   4229  rss  1.92 GB  mps  0.00 GB
+step   4239  rss  1.56 GB  mps  0.00 GB
+step   4249  rss  1.56 GB  mps  0.00 GB
+step   4259  rss  1.71 GB  mps  0.00 GB
+step   4269  rss  1.71 GB  mps  0.00 GB
+epoch 74 train time 24.7 s
+step   4276  rss  1.11 GB  mps  0.00 GB
+step   4286  rss  1.92 GB  mps  0.00 GB
+step   4296  rss  1.92 GB  mps  0.00 GB
+step   4306  rss  1.92 GB  mps  0.00 GB
+step   4316  rss  1.92 GB  mps  0.00 GB
+step   4326  rss  1.92 GB  mps  0.00 GB
+epoch 75 train time 23.6 s
+step   4333  rss  1.66 GB  mps  0.00 GB
+step   4343  rss  1.28 GB  mps  0.00 GB
+step   4353  rss  1.80 GB  mps  0.00 GB
+step   4363  rss  1.81 GB  mps  0.00 GB
+step   4373  rss  1.81 GB  mps  0.00 GB
+step   4383  rss  1.81 GB  mps  0.00 GB
+epoch 76 train time 23.9 s
+step   4390  rss  1.60 GB  mps  0.00 GB
+step   4400  rss  1.86 GB  mps  0.00 GB
+step   4410  rss  1.86 GB  mps  0.00 GB
+step   4420  rss  1.86 GB  mps  0.00 GB
+step   4430  rss  1.86 GB  mps  0.00 GB
+step   4440  rss  1.86 GB  mps  0.00 GB
+epoch 77 train time 24.0 s
+step   4447  rss  1.21 GB  mps  0.00 GB
+step   4457  rss  1.70 GB  mps  0.00 GB
+step   4467  rss  1.70 GB  mps  0.00 GB
+step   4477  rss  1.70 GB  mps  0.00 GB
+step   4487  rss  1.70 GB  mps  0.00 GB
+step   4497  rss  1.20 GB  mps  0.00 GB
+epoch 78 train time 23.3 s
+step   4504  rss  1.43 GB  mps  0.00 GB
+step   4514  rss  1.80 GB  mps  0.00 GB
+step   4524  rss  1.88 GB  mps  0.00 GB
+step   4534  rss  1.88 GB  mps  0.00 GB
+step   4544  rss  1.88 GB  mps  0.00 GB
+step   4554  rss  1.88 GB  mps  0.00 GB
+epoch 79 train time 24.1 s
+step   4561  rss  1.62 GB  mps  0.00 GB
+step   4571  rss  1.45 GB  mps  0.00 GB
+step   4581  rss  1.86 GB  mps  0.00 GB
+step   4591  rss  1.93 GB  mps  0.00 GB
+step   4601  rss  1.93 GB  mps  0.00 GB
+step   4611  rss  1.93 GB  mps  0.00 GB
+epoch 80 train time 23.8 s
+step   4618  rss  1.69 GB  mps  0.00 GB
+step   4628  rss  1.54 GB  mps  0.00 GB
+step   4638  rss  1.54 GB  mps  0.00 GB
+step   4648  rss  1.43 GB  mps  0.00 GB
+step   4658  rss  1.69 GB  mps  0.00 GB
+step   4668  rss  1.69 GB  mps  0.00 GB
+epoch 81 train time 23.5 s
+step   4675  rss  1.41 GB  mps  0.00 GB
+step   4685  rss  1.90 GB  mps  0.00 GB
+step   4695  rss  1.92 GB  mps  0.00 GB
+step   4705  rss  1.31 GB  mps  0.00 GB
+step   4715  rss  1.79 GB  mps  0.00 GB
+step   4725  rss  1.79 GB  mps  0.00 GB
+epoch 82 train time 28.2 s
+step   4732  rss  1.59 GB  mps  0.00 GB
+step   4742  rss  1.59 GB  mps  0.00 GB
+step   4752  rss  1.59 GB  mps  0.00 GB
+step   4762  rss  1.59 GB  mps  0.00 GB
+step   4772  rss  1.59 GB  mps  0.00 GB
+step   4782  rss  1.59 GB  mps  0.00 GB
+epoch 83 train time 23.5 s
+step   4789  rss  1.65 GB  mps  0.00 GB
+step   4799  rss  1.95 GB  mps  0.00 GB
+step   4809  rss  2.08 GB  mps  0.00 GB
+step   4819  rss  2.09 GB  mps  0.00 GB
+step   4829  rss  2.09 GB  mps  0.00 GB
+step   4839  rss  2.09 GB  mps  0.00 GB
+epoch 84 train time 24.4 s
+step   4846  rss  1.53 GB  mps  0.00 GB
+step   4856  rss  1.53 GB  mps  0.00 GB
+step   4866  rss  1.53 GB  mps  0.00 GB
+step   4876  rss  1.53 GB  mps  0.00 GB
+step   4886  rss  1.31 GB  mps  0.00 GB
+step   4896  rss  1.19 GB  mps  0.00 GB
+epoch 85 train time 26.0 s
+step   4903  rss  1.57 GB  mps  0.00 GB
+step   4913  rss  1.86 GB  mps  0.00 GB
+step   4923  rss  1.87 GB  mps  0.00 GB
+step   4933  rss  1.87 GB  mps  0.00 GB
+step   4943  rss  1.54 GB  mps  0.00 GB
+step   4953  rss  1.55 GB  mps  0.00 GB
+epoch 86 train time 25.9 s
+step   4960  rss  1.53 GB  mps  0.00 GB
+step   4970  rss  1.74 GB  mps  0.00 GB
+step   4980  rss  1.91 GB  mps  0.00 GB
+step   4990  rss  1.91 GB  mps  0.00 GB
+step   5000  rss  1.91 GB  mps  0.00 GB
+step   5010  rss  1.91 GB  mps  0.00 GB
+epoch 87 train time 23.7 s
+step   5017  rss  1.44 GB  mps  0.00 GB
+step   5027  rss  1.91 GB  mps  0.00 GB
+step   5037  rss  1.93 GB  mps  0.00 GB
+step   5047  rss  1.93 GB  mps  0.00 GB
+step   5057  rss  1.93 GB  mps  0.00 GB
+step   5067  rss  1.11 GB  mps  0.00 GB
+epoch 88 train time 25.6 s
+step   5074  rss  1.23 GB  mps  0.00 GB
+step   5084  rss  1.59 GB  mps  0.00 GB
+step   5094  rss  1.20 GB  mps  0.00 GB
+step   5104  rss  1.11 GB  mps  0.00 GB
+step   5114  rss  1.12 GB  mps  0.00 GB
+step   5124  rss  1.10 GB  mps  0.00 GB
+epoch 89 train time 29.7 s
+step   5131  rss  1.25 GB  mps  0.00 GB
+step   5141  rss  1.23 GB  mps  0.00 GB
+step   5151  rss  1.23 GB  mps  0.00 GB
+step   5161  rss  1.30 GB  mps  0.00 GB
+step   5171  rss  1.30 GB  mps  0.00 GB
+step   5181  rss  1.77 GB  mps  0.00 GB
+epoch 90 train time 25.5 s
+step   5188  rss  1.65 GB  mps  0.00 GB
+step   5198  rss  1.65 GB  mps  0.00 GB
+step   5208  rss  1.65 GB  mps  0.00 GB
+step   5218  rss  1.65 GB  mps  0.00 GB
+step   5228  rss  1.11 GB  mps  0.00 GB
+step   5238  rss  1.18 GB  mps  0.00 GB
+epoch 91 train time 26.1 s
+step   5245  rss  1.25 GB  mps  0.00 GB
+step   5255  rss  1.80 GB  mps  0.00 GB
+step   5265  rss  1.97 GB  mps  0.00 GB
+step   5275  rss  1.98 GB  mps  0.00 GB
+step   5285  rss  1.98 GB  mps  0.00 GB
+step   5295  rss  1.99 GB  mps  0.00 GB
+epoch 92 train time 25.9 s
+step   5302  rss  1.64 GB  mps  0.00 GB
+step   5312  rss  1.64 GB  mps  0.00 GB
+step   5322  rss  1.65 GB  mps  0.00 GB
+step   5332  rss  1.65 GB  mps  0.00 GB
+step   5342  rss  1.74 GB  mps  0.00 GB
+step   5352  rss  1.74 GB  mps  0.00 GB
+epoch 93 train time 24.9 s
+step   5359  rss  1.52 GB  mps  0.00 GB
+step   5369  rss  1.52 GB  mps  0.00 GB
+step   5379  rss  1.82 GB  mps  0.00 GB
+step   5389  rss  1.82 GB  mps  0.00 GB
+step   5399  rss  1.82 GB  mps  0.00 GB
+step   5409  rss  1.82 GB  mps  0.00 GB
+epoch 94 train time 24.7 s
+step   5416  rss  1.52 GB  mps  0.00 GB
+step   5426  rss  1.54 GB  mps  0.00 GB
+step   5436  rss  1.54 GB  mps  0.00 GB
+step   5446  rss  1.54 GB  mps  0.00 GB
+step   5456  rss  1.54 GB  mps  0.00 GB
+step   5466  rss  1.54 GB  mps  0.00 GB
+epoch 95 train time 24.1 s
+step   5473  rss  1.48 GB  mps  0.00 GB
+step   5483  rss  1.48 GB  mps  0.00 GB
+step   5493  rss  1.75 GB  mps  0.00 GB
+step   5503  rss  1.87 GB  mps  0.00 GB
+step   5513  rss  2.09 GB  mps  0.00 GB
+step   5523  rss  1.10 GB  mps  0.00 GB
+epoch 96 train time 26.7 s
+step   5530  rss  1.69 GB  mps  0.00 GB
+step   5540  rss  1.59 GB  mps  0.00 GB
+step   5550  rss  1.59 GB  mps  0.00 GB
+step   5560  rss  1.58 GB  mps  0.00 GB
+step   5570  rss  1.59 GB  mps  0.00 GB
+step   5580  rss  1.59 GB  mps  0.00 GB
+epoch 97 train time 25.2 s
+step   5587  rss  1.61 GB  mps  0.00 GB
+step   5597  rss  1.61 GB  mps  0.00 GB
+step   5607  rss  1.61 GB  mps  0.00 GB
+step   5617  rss  1.61 GB  mps  0.00 GB
+step   5627  rss  1.79 GB  mps  0.00 GB
+step   5637  rss  1.79 GB  mps  0.00 GB
+epoch 98 train time 23.6 s
+step   5644  rss  1.69 GB  mps  0.00 GB
+step   5654  rss  1.74 GB  mps  0.00 GB
+step   5664  rss  1.74 GB  mps  0.00 GB
+step   5674  rss  1.74 GB  mps  0.00 GB
+step   5684  rss  1.64 GB  mps  0.00 GB
+step   5694  rss  1.64 GB  mps  0.00 GB
+epoch 99 train time 23.6 s
+step   5701  rss  1.38 GB  mps  0.00 GB
+step   5711  rss  1.68 GB  mps  0.00 GB
+step   5721  rss  1.68 GB  mps  0.00 GB
+step   5731  rss  1.97 GB  mps  0.00 GB
+step   5741  rss  1.97 GB  mps  0.00 GB
+step   5751  rss  1.97 GB  mps  0.00 GB
+epoch 100 train time 24.7 s
+step   5758  rss  1.56 GB  mps  0.00 GB
+step   5768  rss  1.80 GB  mps  0.00 GB
+step   5778  rss  1.80 GB  mps  0.00 GB
+step   5788  rss  1.86 GB  mps  0.00 GB
+step   5798  rss  1.86 GB  mps  0.00 GB
+step   5808  rss  1.86 GB  mps  0.00 GB
+epoch 101 train time 23.7 s
+step   5815  rss  1.57 GB  mps  0.00 GB
+step   5825  rss  1.65 GB  mps  0.00 GB
+step   5835  rss  1.94 GB  mps  0.00 GB
+step   5845  rss  1.95 GB  mps  0.00 GB
+step   5855  rss  1.95 GB  mps  0.00 GB
+step   5865  rss  1.95 GB  mps  0.00 GB
+epoch 102 train time 24.2 s
+step   5872  rss  1.59 GB  mps  0.00 GB
+step   5882  rss  1.87 GB  mps  0.00 GB
+step   5892  rss  1.74 GB  mps  0.00 GB
+step   5902  rss  1.74 GB  mps  0.00 GB
+step   5912  rss  1.74 GB  mps  0.00 GB
+step   5922  rss  1.74 GB  mps  0.00 GB
+epoch 103 train time 24.3 s
+step   5929  rss  1.45 GB  mps  0.00 GB
+step   5939  rss  1.75 GB  mps  0.00 GB
+step   5949  rss  1.75 GB  mps  0.00 GB
+step   5959  rss  1.34 GB  mps  0.00 GB
+step   5969  rss  1.72 GB  mps  0.00 GB
+step   5979  rss  1.95 GB  mps  0.00 GB
+epoch 104 train time 23.3 s
+step   5986  rss  1.51 GB  mps  0.00 GB
+step   5996  rss  1.97 GB  mps  0.00 GB
+step   6006  rss  1.94 GB  mps  0.00 GB
+step   6016  rss  1.94 GB  mps  0.00 GB
+step   6026  rss  1.92 GB  mps  0.00 GB
+step   6036  rss  1.92 GB  mps  0.00 GB
+epoch 105 train time 24.5 s
+step   6043  rss  1.64 GB  mps  0.00 GB
+step   6053  rss  1.86 GB  mps  0.00 GB
+step   6063  rss  1.86 GB  mps  0.00 GB
+step   6073  rss  1.86 GB  mps  0.00 GB
+step   6083  rss  1.93 GB  mps  0.00 GB
+step   6093  rss  1.93 GB  mps  0.00 GB
+epoch 106 train time 23.5 s
+step   6100  rss  1.35 GB  mps  0.00 GB
+step   6110  rss  1.63 GB  mps  0.00 GB
+step   6120  rss  1.87 GB  mps  0.00 GB
+step   6130  rss  1.87 GB  mps  0.00 GB
+step   6140  rss  1.87 GB  mps  0.00 GB
+step   6150  rss  1.87 GB  mps  0.00 GB
+epoch 107 train time 23.9 s
+step   6157  rss  1.36 GB  mps  0.00 GB
+step   6167  rss  1.62 GB  mps  0.00 GB
+step   6177  rss  1.62 GB  mps  0.00 GB
+step   6187  rss  1.94 GB  mps  0.00 GB
+step   6197  rss  1.94 GB  mps  0.00 GB
+step   6207  rss  1.92 GB  mps  0.00 GB
+epoch 108 train time 24.7 s
+step   6214  rss  1.64 GB  mps  0.00 GB
+step   6224  rss  1.64 GB  mps  0.00 GB
+step   6234  rss  1.93 GB  mps  0.00 GB
+step   6244  rss  1.93 GB  mps  0.00 GB
+step   6254  rss  1.22 GB  mps  0.00 GB
+step   6264  rss  1.50 GB  mps  0.00 GB
+epoch 109 train time 25.1 s
+step   6271  rss  1.75 GB  mps  0.00 GB
+step   6281  rss  1.75 GB  mps  0.00 GB
+step   6291  rss  1.57 GB  mps  0.00 GB
+step   6301  rss  1.58 GB  mps  0.00 GB
+step   6311  rss  1.58 GB  mps  0.00 GB
+step   6321  rss  1.73 GB  mps  0.00 GB
+epoch 110 train time 24.3 s
+step   6328  rss  1.55 GB  mps  0.00 GB
+step   6338  rss  1.55 GB  mps  0.00 GB
+step   6348  rss  1.75 GB  mps  0.00 GB
+step   6358  rss  1.75 GB  mps  0.00 GB
+step   6368  rss  1.75 GB  mps  0.00 GB
+step   6378  rss  1.98 GB  mps  0.00 GB
+epoch 111 train time 23.7 s
+step   6385  rss  1.68 GB  mps  0.00 GB
+step   6395  rss  1.68 GB  mps  0.00 GB
+step   6405  rss  1.68 GB  mps  0.00 GB
+step   6415  rss  1.75 GB  mps  0.00 GB
+step   6425  rss  1.93 GB  mps  0.00 GB
+step   6435  rss  1.94 GB  mps  0.00 GB
+epoch 112 train time 23.5 s
+step   6442  rss  1.49 GB  mps  0.00 GB
+step   6452  rss  1.49 GB  mps  0.00 GB
+step   6462  rss  1.44 GB  mps  0.00 GB
+step   6472  rss  1.10 GB  mps  0.00 GB
+step   6482  rss  1.96 GB  mps  0.00 GB
+step   6492  rss  1.96 GB  mps  0.00 GB
+epoch 113 train time 25.8 s
+step   6499  rss  1.39 GB  mps  0.00 GB
+step   6509  rss  1.93 GB  mps  0.00 GB
+step   6519  rss  1.93 GB  mps  0.00 GB
+step   6529  rss  1.93 GB  mps  0.00 GB
+step   6539  rss  1.96 GB  mps  0.00 GB
+step   6549  rss  1.97 GB  mps  0.00 GB
+epoch 114 train time 24.3 s
+step   6556  rss  1.40 GB  mps  0.00 GB
+step   6566  rss  1.31 GB  mps  0.00 GB
+step   6576  rss  1.68 GB  mps  0.00 GB
+step   6586  rss  1.68 GB  mps  0.00 GB
+step   6596  rss  1.68 GB  mps  0.00 GB
+step   6606  rss  1.68 GB  mps  0.00 GB
+epoch 115 train time 23.4 s
+step   6613  rss  1.59 GB  mps  0.00 GB
+step   6623  rss  1.59 GB  mps  0.00 GB
+step   6633  rss  1.98 GB  mps  0.00 GB
+step   6643  rss  1.98 GB  mps  0.00 GB
+step   6653  rss  1.88 GB  mps  0.00 GB
+step   6663  rss  1.91 GB  mps  0.00 GB
+epoch 116 train time 24.4 s
+step   6670  rss  1.52 GB  mps  0.00 GB
+step   6680  rss  1.92 GB  mps  0.00 GB
+step   6690  rss  1.92 GB  mps  0.00 GB
+step   6700  rss  1.57 GB  mps  0.00 GB
+step   6710  rss  1.57 GB  mps  0.00 GB
+step   6720  rss  1.57 GB  mps  0.00 GB
+epoch 117 train time 23.5 s
+step   6727  rss  1.25 GB  mps  0.00 GB
+step   6737  rss  1.60 GB  mps  0.00 GB
+step   6747  rss  1.60 GB  mps  0.00 GB
+step   6757  rss  1.90 GB  mps  0.00 GB
+step   6767  rss  1.91 GB  mps  0.00 GB
+step   6777  rss  1.48 GB  mps  0.00 GB
+epoch 118 train time 23.3 s
+step   6784  rss  1.46 GB  mps  0.00 GB
+step   6794  rss  1.49 GB  mps  0.00 GB
+step   6804  rss  1.89 GB  mps  0.00 GB
+step   6814  rss  1.89 GB  mps  0.00 GB
+step   6824  rss  1.82 GB  mps  0.00 GB
+step   6834  rss  1.83 GB  mps  0.00 GB
+epoch 119 train time 25.0 s
+step   6841  rss  1.60 GB  mps  0.00 GB
+step   6851  rss  1.60 GB  mps  0.00 GB
+step   6861  rss  1.60 GB  mps  0.00 GB
+step   6871  rss  1.60 GB  mps  0.00 GB
+step   6881  rss  1.69 GB  mps  0.00 GB
+step   6891  rss  1.79 GB  mps  0.00 GB
+epoch 120 train time 23.9 s
+step   6898  rss  1.64 GB  mps  0.00 GB
+step   6908  rss  1.69 GB  mps  0.00 GB
+step   6918  rss  1.69 GB  mps  0.00 GB
+step   6928  rss  1.69 GB  mps  0.00 GB
+step   6938  rss  1.69 GB  mps  0.00 GB
+step   6948  rss  1.69 GB  mps  0.00 GB
+epoch 121 train time 23.8 s
+step   6955  rss  1.60 GB  mps  0.00 GB
+step   6965  rss  1.67 GB  mps  0.00 GB
+step   6975  rss  1.90 GB  mps  0.00 GB
+step   6985  rss  1.93 GB  mps  0.00 GB
+step   6995  rss  1.93 GB  mps  0.00 GB
+step   7005  rss  1.42 GB  mps  0.00 GB
+epoch 122 train time 25.3 s
+step   7012  rss  1.52 GB  mps  0.00 GB
+step   7022  rss  1.15 GB  mps  0.00 GB
+step   7032  rss  1.35 GB  mps  0.00 GB
+step   7042  rss  1.96 GB  mps  0.00 GB
+step   7052  rss  1.96 GB  mps  0.00 GB
+step   7062  rss  1.87 GB  mps  0.00 GB
+epoch 123 train time 24.5 s
+step   7069  rss  1.61 GB  mps  0.00 GB
+step   7079  rss  1.92 GB  mps  0.00 GB
+step   7089  rss  1.92 GB  mps  0.00 GB
+step   7099  rss  1.92 GB  mps  0.00 GB
+step   7109  rss  1.95 GB  mps  0.00 GB
+step   7119  rss  1.95 GB  mps  0.00 GB
+epoch 124 train time 23.4 s
+step   7126  rss  1.73 GB  mps  0.00 GB
+step   7136  rss  1.37 GB  mps  0.00 GB
+step   7146  rss  2.00 GB  mps  0.00 GB
+step   7156  rss  1.62 GB  mps  0.00 GB
+step   7166  rss  1.84 GB  mps  0.00 GB
+step   7176  rss  1.91 GB  mps  0.00 GB
+epoch 125 train time 24.2 s
+step   7183  rss  1.63 GB  mps  0.00 GB
+step   7193  rss  1.63 GB  mps  0.00 GB
+step   7203  rss  1.91 GB  mps  0.00 GB
+step   7213  rss  1.92 GB  mps  0.00 GB
+step   7223  rss  1.92 GB  mps  0.00 GB
+step   7233  rss  1.92 GB  mps  0.00 GB
+epoch 126 train time 24.1 s
+step   7240  rss  1.64 GB  mps  0.00 GB
+step   7250  rss  1.42 GB  mps  0.00 GB
+step   7260  rss  1.72 GB  mps  0.00 GB
+step   7270  rss  1.72 GB  mps  0.00 GB
+step   7280  rss  1.36 GB  mps  0.00 GB
+step   7290  rss  1.18 GB  mps  0.00 GB
+epoch 127 train time 24.3 s
+step   7297  rss  1.63 GB  mps  0.00 GB
+step   7307  rss  1.63 GB  mps  0.00 GB
+step   7317  rss  1.31 GB  mps  0.00 GB
+step   7327  rss  1.68 GB  mps  0.00 GB
+step   7337  rss  1.91 GB  mps  0.00 GB
+step   7347  rss  1.91 GB  mps  0.00 GB
+epoch 128 train time 23.5 s
+step   7354  rss  1.53 GB  mps  0.00 GB
+step   7364  rss  1.53 GB  mps  0.00 GB
+step   7374  rss  1.64 GB  mps  0.00 GB
+step   7384  rss  1.61 GB  mps  0.00 GB
+step   7394  rss  1.75 GB  mps  0.00 GB
+step   7404  rss  1.89 GB  mps  0.00 GB
+epoch 129 train time 24.8 s
+step   7411  rss  1.63 GB  mps  0.00 GB
+step   7421  rss  1.64 GB  mps  0.00 GB
+step   7431  rss  1.74 GB  mps  0.00 GB
+step   7441  rss  1.74 GB  mps  0.00 GB
+step   7451  rss  1.74 GB  mps  0.00 GB
+step   7461  rss  1.74 GB  mps  0.00 GB
+epoch 130 train time 23.3 s
+step   7468  rss  1.59 GB  mps  0.00 GB
+step   7478  rss  1.73 GB  mps  0.00 GB
+step   7488  rss  1.73 GB  mps  0.00 GB
+step   7498  rss  1.73 GB  mps  0.00 GB
+step   7508  rss  1.73 GB  mps  0.00 GB
+step   7518  rss  1.73 GB  mps  0.00 GB
+epoch 131 train time 24.3 s
+step   7525  rss  1.39 GB  mps  0.00 GB
+step   7535  rss  1.92 GB  mps  0.00 GB
+step   7545  rss  1.52 GB  mps  0.00 GB
+step   7555  rss  1.53 GB  mps  0.00 GB
+step   7565  rss  1.53 GB  mps  0.00 GB
+step   7575  rss  1.22 GB  mps  0.00 GB
+epoch 132 train time 23.4 s
+step   7582  rss  1.39 GB  mps  0.00 GB
+step   7592  rss  1.56 GB  mps  0.00 GB
+step   7602  rss  1.56 GB  mps  0.00 GB
+step   7612  rss  1.93 GB  mps  0.00 GB
+step   7622  rss  1.87 GB  mps  0.00 GB
+step   7632  rss  1.88 GB  mps  0.00 GB
+epoch 133 train time 25.4 s
+step   7639  rss  1.34 GB  mps  0.00 GB
+step   7649  rss  1.34 GB  mps  0.00 GB
+step   7659  rss  1.30 GB  mps  0.00 GB
+step   7669  rss  1.30 GB  mps  0.00 GB
+step   7679  rss  1.31 GB  mps  0.00 GB
+step   7689  rss  1.36 GB  mps  0.00 GB
+epoch 134 train time 24.1 s
+step   7696  rss  1.38 GB  mps  0.00 GB
+step   7706  rss  1.38 GB  mps  0.00 GB
+step   7716  rss  1.38 GB  mps  0.00 GB
+step   7726  rss  1.39 GB  mps  0.00 GB
+step   7736  rss  1.39 GB  mps  0.00 GB
+step   7746  rss  1.39 GB  mps  0.00 GB
+epoch 135 train time 23.5 s
+step   7753  rss  1.39 GB  mps  0.00 GB
+step   7763  rss  1.39 GB  mps  0.00 GB
+step   7773  rss  1.39 GB  mps  0.00 GB
+step   7783  rss  1.39 GB  mps  0.00 GB
+step   7793  rss  1.39 GB  mps  0.00 GB
+step   7803  rss  1.39 GB  mps  0.00 GB
+epoch 136 train time 23.5 s
+step   7810  rss  1.39 GB  mps  0.00 GB
+step   7820  rss  1.39 GB  mps  0.00 GB
+step   7830  rss  1.90 GB  mps  0.00 GB
+step   7840  rss  1.91 GB  mps  0.00 GB
+step   7850  rss  1.91 GB  mps  0.00 GB
+step   7860  rss  1.91 GB  mps  0.00 GB
+epoch 137 train time 24.0 s
+step   7867  rss  1.60 GB  mps  0.00 GB
+step   7877  rss  1.60 GB  mps  0.00 GB
+step   7887  rss  1.60 GB  mps  0.00 GB
+step   7897  rss  1.60 GB  mps  0.00 GB
+step   7907  rss  1.86 GB  mps  0.00 GB
+step   7917  rss  1.86 GB  mps  0.00 GB
+epoch 138 train time 23.5 s
+step   7924  rss  1.64 GB  mps  0.00 GB
+step   7934  rss  1.64 GB  mps  0.00 GB
+step   7944  rss  1.64 GB  mps  0.00 GB
+step   7954  rss  1.92 GB  mps  0.00 GB
+step   7964  rss  1.93 GB  mps  0.00 GB
+step   7974  rss  1.93 GB  mps  0.00 GB
+epoch 139 train time 25.0 s
+step   7981  rss  1.56 GB  mps  0.00 GB
+step   7991  rss  1.56 GB  mps  0.00 GB
+step   8001  rss  1.56 GB  mps  0.00 GB
+step   8011  rss  1.56 GB  mps  0.00 GB
+step   8021  rss  1.56 GB  mps  0.00 GB
+step   8031  rss  1.56 GB  mps  0.00 GB
+epoch 140 train time 23.2 s
+step   8038  rss  1.56 GB  mps  0.00 GB
+step   8048  rss  1.64 GB  mps  0.00 GB
+step   8058  rss  1.41 GB  mps  0.00 GB
+step   8068  rss  1.41 GB  mps  0.00 GB
+step   8078  rss  1.18 GB  mps  0.00 GB
+step   8088  rss  1.55 GB  mps  0.00 GB
+epoch 141 train time 23.3 s
+step   8095  rss  1.50 GB  mps  0.00 GB
+step   8105  rss  1.34 GB  mps  0.00 GB
+step   8115  rss  1.91 GB  mps  0.00 GB
+step   8125  rss  1.91 GB  mps  0.00 GB
+step   8135  rss  1.91 GB  mps  0.00 GB
+step   8145  rss  1.91 GB  mps  0.00 GB
+epoch 142 train time 24.7 s
+step   8152  rss  1.62 GB  mps  0.00 GB
+step   8162  rss  1.62 GB  mps  0.00 GB
+step   8172  rss  1.62 GB  mps  0.00 GB
+step   8182  rss  1.92 GB  mps  0.00 GB
+step   8192  rss  1.92 GB  mps  0.00 GB
+step   8202  rss  1.92 GB  mps  0.00 GB
+epoch 143 train time 23.5 s
+step   8209  rss  1.64 GB  mps  0.00 GB
+step   8219  rss  1.64 GB  mps  0.00 GB
+step   8229  rss  1.64 GB  mps  0.00 GB
+step   8239  rss  1.64 GB  mps  0.00 GB
+step   8249  rss  1.64 GB  mps  0.00 GB
+step   8259  rss  1.64 GB  mps  0.00 GB
+epoch 144 train time 23.4 s
+step   8266  rss  1.55 GB  mps  0.00 GB
+step   8276  rss  1.24 GB  mps  0.00 GB
+step   8286  rss  1.26 GB  mps  0.00 GB
+step   8296  rss  1.26 GB  mps  0.00 GB
+step   8306  rss  1.31 GB  mps  0.00 GB
+step   8316  rss  1.91 GB  mps  0.00 GB
+epoch 145 train time 26.1 s
+step   8323  rss  1.63 GB  mps  0.00 GB
+step   8333  rss  1.86 GB  mps  0.00 GB
+step   8343  rss  1.86 GB  mps  0.00 GB
+step   8353  rss  1.86 GB  mps  0.00 GB
+step   8363  rss  1.66 GB  mps  0.00 GB
+step   8373  rss  1.10 GB  mps  0.00 GB
+epoch 146 train time 26.9 s
+step   8380  rss  1.56 GB  mps  0.00 GB
+step   8390  rss  1.80 GB  mps  0.00 GB
+step   8400  rss  1.81 GB  mps  0.00 GB
+step   8410  rss  1.81 GB  mps  0.00 GB
+step   8420  rss  1.82 GB  mps  0.00 GB
+step   8430  rss  1.80 GB  mps  0.00 GB
+epoch 147 train time 25.9 s
+step   8437  rss  1.65 GB  mps  0.00 GB
+step   8447  rss  1.65 GB  mps  0.00 GB
+step   8457  rss  1.65 GB  mps  0.00 GB
+step   8467  rss  1.65 GB  mps  0.00 GB
+step   8477  rss  1.65 GB  mps  0.00 GB
+step   8487  rss  1.65 GB  mps  0.00 GB
+epoch 148 train time 23.6 s
+step   8494  rss  1.67 GB  mps  0.00 GB
+step   8504  rss  1.67 GB  mps  0.00 GB
+step   8514  rss  1.67 GB  mps  0.00 GB
+step   8524  rss  1.67 GB  mps  0.00 GB
+step   8534  rss  1.67 GB  mps  0.00 GB
+step   8544  rss  1.67 GB  mps  0.00 GB
+epoch 149 train time 23.6 s
+step   8551  rss  1.61 GB  mps  0.00 GB
+step   8561  rss  1.61 GB  mps  0.00 GB
+step   8571  rss  1.35 GB  mps  0.00 GB
+step   8581  rss  1.59 GB  mps  0.00 GB
+step   8591  rss  1.81 GB  mps  0.00 GB
+step   8601  rss  1.81 GB  mps  0.00 GB
+epoch 150 train time 23.5 s
+step   8608  rss  1.74 GB  mps  0.00 GB
+step   8618  rss  1.69 GB  mps  0.00 GB
+step   8628  rss  1.66 GB  mps  0.00 GB
+step   8638  rss  1.66 GB  mps  0.00 GB
+step   8648  rss  2.03 GB  mps  0.00 GB
+step   8658  rss  2.03 GB  mps  0.00 GB
+epoch 151 train time 23.7 s
+step   8665  rss  1.78 GB  mps  0.00 GB
+step   8675  rss  1.78 GB  mps  0.00 GB
+step   8685  rss  1.78 GB  mps  0.00 GB
+step   8695  rss  1.98 GB  mps  0.00 GB
+step   8705  rss  1.98 GB  mps  0.00 GB
+step   8715  rss  1.63 GB  mps  0.00 GB
+epoch 152 train time 23.5 s
+step   8722  rss  1.54 GB  mps  0.00 GB
+step   8732  rss  1.54 GB  mps  0.00 GB
+step   8742  rss  1.89 GB  mps  0.00 GB
+step   8752  rss  1.89 GB  mps  0.00 GB
+step   8762  rss  1.22 GB  mps  0.00 GB
+step   8772  rss  1.63 GB  mps  0.00 GB
+epoch 153 train time 25.0 s
+step   8779  rss  1.56 GB  mps  0.00 GB
+step   8789  rss  1.92 GB  mps  0.00 GB
+step   8799  rss  1.93 GB  mps  0.00 GB
+step   8809  rss  1.93 GB  mps  0.00 GB
+step   8819  rss  1.93 GB  mps  0.00 GB
+step   8829  rss  1.92 GB  mps  0.00 GB
+epoch 154 train time 25.0 s
+step   8836  rss  1.39 GB  mps  0.00 GB
+step   8846  rss  1.60 GB  mps  0.00 GB
+step   8856  rss  1.60 GB  mps  0.00 GB
+step   8866  rss  1.60 GB  mps  0.00 GB
+step   8876  rss  1.60 GB  mps  0.00 GB
+step   8886  rss  1.82 GB  mps  0.00 GB
+epoch 155 train time 25.1 s
+step   8893  rss  1.61 GB  mps  0.00 GB
+step   8903  rss  1.85 GB  mps  0.00 GB
+step   8913  rss  1.85 GB  mps  0.00 GB
+step   8923  rss  1.85 GB  mps  0.00 GB
+step   8933  rss  1.48 GB  mps  0.00 GB
+step   8943  rss  1.48 GB  mps  0.00 GB
+epoch 156 train time 24.5 s
+step   8950  rss  1.57 GB  mps  0.00 GB
+step   8960  rss  1.26 GB  mps  0.00 GB
+step   8970  rss  1.37 GB  mps  0.00 GB
+step   8980  rss  1.71 GB  mps  0.00 GB
+step   8990  rss  1.92 GB  mps  0.00 GB
+step   9000  rss  1.92 GB  mps  0.00 GB
+epoch 157 train time 24.6 s
+step   9007  rss  1.71 GB  mps  0.00 GB
+step   9017  rss  1.89 GB  mps  0.00 GB
+step   9027  rss  1.89 GB  mps  0.00 GB
+step   9037  rss  0.90 GB  mps  0.00 GB
+step   9047  rss  1.49 GB  mps  0.00 GB
+step   9057  rss  1.49 GB  mps  0.00 GB
+epoch 158 train time 24.5 s
+step   9064  rss  1.58 GB  mps  0.00 GB
+step   9074  rss  1.57 GB  mps  0.00 GB
+step   9084  rss  1.21 GB  mps  0.00 GB
+step   9094  rss  1.20 GB  mps  0.00 GB
+step   9104  rss  1.91 GB  mps  0.00 GB
+step   9114  rss  1.91 GB  mps  0.00 GB
+epoch 159 train time 24.6 s
+step   9121  rss  1.65 GB  mps  0.00 GB
+step   9131  rss  1.65 GB  mps  0.00 GB
+step   9141  rss  1.65 GB  mps  0.00 GB
+step   9151  rss  1.65 GB  mps  0.00 GB
+step   9161  rss  1.65 GB  mps  0.00 GB
+step   9171  rss  1.65 GB  mps  0.00 GB
+epoch 160 train time 23.6 s
+step   9178  rss  1.65 GB  mps  0.00 GB
+step   9188  rss  1.65 GB  mps  0.00 GB
+step   9198  rss  1.34 GB  mps  0.00 GB
+step   9208  rss  1.34 GB  mps  0.00 GB
+step   9218  rss  1.34 GB  mps  0.00 GB
+step   9228  rss  1.34 GB  mps  0.00 GB
+epoch 161 train time 23.4 s
+step   9235  rss  1.57 GB  mps  0.00 GB
+step   9245  rss  1.44 GB  mps  0.00 GB
+step   9255  rss  1.69 GB  mps  0.00 GB
+step   9265  rss  1.91 GB  mps  0.00 GB
+step   9275  rss  1.91 GB  mps  0.00 GB
+step   9285  rss  1.92 GB  mps  0.00 GB
+epoch 162 train time 24.6 s
+step   9292  rss  1.60 GB  mps  0.00 GB
+step   9302  rss  1.60 GB  mps  0.00 GB
+step   9312  rss  1.79 GB  mps  0.00 GB
+step   9322  rss  1.80 GB  mps  0.00 GB
+step   9332  rss  1.80 GB  mps  0.00 GB
+step   9342  rss  1.93 GB  mps  0.00 GB
+epoch 163 train time 24.4 s
+step   9349  rss  1.58 GB  mps  0.00 GB
+step   9359  rss  1.58 GB  mps  0.00 GB
+step   9369  rss  1.58 GB  mps  0.00 GB
+step   9379  rss  1.58 GB  mps  0.00 GB
+step   9389  rss  1.66 GB  mps  0.00 GB
+step   9399  rss  1.66 GB  mps  0.00 GB
+epoch 164 train time 23.4 s
+step   9406  rss  1.66 GB  mps  0.00 GB
+step   9416  rss  1.31 GB  mps  0.00 GB
+step   9426  rss  1.59 GB  mps  0.00 GB
+step   9436  rss  1.59 GB  mps  0.00 GB
+step   9446  rss  1.59 GB  mps  0.00 GB
+step   9456  rss  1.60 GB  mps  0.00 GB
+epoch 165 train time 23.5 s
+step   9463  rss  1.71 GB  mps  0.00 GB
+step   9473  rss  1.78 GB  mps  0.00 GB
+step   9483  rss  1.79 GB  mps  0.00 GB
+step   9493  rss  1.79 GB  mps  0.00 GB
+step   9503  rss  1.79 GB  mps  0.00 GB
+step   9513  rss  1.79 GB  mps  0.00 GB
+epoch 166 train time 23.5 s
+step   9520  rss  1.35 GB  mps  0.00 GB
+step   9530  rss  1.87 GB  mps  0.00 GB
+step   9540  rss  1.87 GB  mps  0.00 GB
+step   9550  rss  1.79 GB  mps  0.00 GB
+step   9560  rss  1.79 GB  mps  0.00 GB
+step   9570  rss  1.32 GB  mps  0.00 GB
+epoch 167 train time 23.5 s
+step   9577  rss  1.40 GB  mps  0.00 GB
+step   9587  rss  1.47 GB  mps  0.00 GB
+step   9597  rss  1.28 GB  mps  0.00 GB
+step   9607  rss  1.58 GB  mps  0.00 GB
+step   9617  rss  1.56 GB  mps  0.00 GB
+step   9627  rss  1.56 GB  mps  0.00 GB
+epoch 168 train time 23.7 s
+step   9634  rss  1.62 GB  mps  0.00 GB
+step   9644  rss  1.65 GB  mps  0.00 GB
+step   9654  rss  1.65 GB  mps  0.00 GB
+step   9664  rss  1.65 GB  mps  0.00 GB
+step   9674  rss  1.91 GB  mps  0.00 GB
+step   9684  rss  1.92 GB  mps  0.00 GB
+epoch 169 train time 24.6 s
+step   9691  rss  1.61 GB  mps  0.00 GB
+step   9701  rss  1.92 GB  mps  0.00 GB
+step   9711  rss  1.92 GB  mps  0.00 GB
+step   9721  rss  1.92 GB  mps  0.00 GB
+step   9731  rss  1.61 GB  mps  0.00 GB
+step   9741  rss  1.80 GB  mps  0.00 GB
+epoch 170 train time 24.3 s
+step   9748  rss  1.63 GB  mps  0.00 GB
+step   9758  rss  1.63 GB  mps  0.00 GB
+step   9768  rss  1.63 GB  mps  0.00 GB
+step   9778  rss  1.63 GB  mps  0.00 GB
+step   9788  rss  1.63 GB  mps  0.00 GB
+step   9798  rss  1.63 GB  mps  0.00 GB
+epoch 171 train time 23.7 s
+step   9805  rss  1.63 GB  mps  0.00 GB
+step   9815  rss  1.64 GB  mps  0.00 GB
+step   9825  rss  1.68 GB  mps  0.00 GB
+step   9835  rss  1.68 GB  mps  0.00 GB
+step   9845  rss  1.95 GB  mps  0.00 GB
+step   9855  rss  1.95 GB  mps  0.00 GB
+epoch 172 train time 24.3 s
+step   9862  rss  1.69 GB  mps  0.00 GB
+step   9872  rss  1.69 GB  mps  0.00 GB
+step   9882  rss  1.96 GB  mps  0.00 GB
+step   9892  rss  1.98 GB  mps  0.00 GB
+step   9902  rss  1.98 GB  mps  0.00 GB
+step   9912  rss  1.98 GB  mps  0.00 GB
+epoch 173 train time 24.9 s
+step   9919  rss  1.54 GB  mps  0.00 GB
+step   9929  rss  1.54 GB  mps  0.00 GB
+step   9939  rss  1.75 GB  mps  0.00 GB
+step   9949  rss  1.75 GB  mps  0.00 GB
+step   9959  rss  1.75 GB  mps  0.00 GB
+step   9969  rss  1.75 GB  mps  0.00 GB
+epoch 174 train time 23.7 s
+step   9976  rss  1.51 GB  mps  0.00 GB
+step   9986  rss  1.64 GB  mps  0.00 GB
+step   9996  rss  1.64 GB  mps  0.00 GB
+step  10006  rss  1.64 GB  mps  0.00 GB
+step  10016  rss  1.64 GB  mps  0.00 GB
+step  10026  rss  1.97 GB  mps  0.00 GB
+epoch 175 train time 25.1 s
+step  10033  rss  1.39 GB  mps  0.00 GB
+step  10043  rss  1.39 GB  mps  0.00 GB
+step  10053  rss  1.97 GB  mps  0.00 GB
+step  10063  rss  1.98 GB  mps  0.00 GB
+step  10073  rss  1.98 GB  mps  0.00 GB
+step  10083  rss  1.64 GB  mps  0.00 GB
+epoch 176 train time 23.6 s
+step  10090  rss  1.63 GB  mps  0.00 GB
+step  10100  rss  1.98 GB  mps  0.00 GB
+step  10110  rss  1.98 GB  mps  0.00 GB
+step  10120  rss  1.98 GB  mps  0.00 GB
+step  10130  rss  1.98 GB  mps  0.00 GB
+step  10140  rss  1.98 GB  mps  0.00 GB
+epoch 177 train time 23.7 s
+step  10147  rss  1.47 GB  mps  0.00 GB
+step  10157  rss  1.46 GB  mps  0.00 GB
+step  10167  rss  1.24 GB  mps  0.00 GB
+step  10177  rss  1.64 GB  mps  0.00 GB
+step  10187  rss  1.64 GB  mps  0.00 GB
+step  10197  rss  1.77 GB  mps  0.00 GB
+epoch 178 train time 23.4 s
+step  10204  rss  1.73 GB  mps  0.00 GB
+step  10214  rss  1.73 GB  mps  0.00 GB
+step  10224  rss  1.86 GB  mps  0.00 GB
+step  10234  rss  1.87 GB  mps  0.00 GB
+step  10244  rss  1.90 GB  mps  0.00 GB
+step  10254  rss  1.90 GB  mps  0.00 GB
+epoch 179 train time 24.3 s
+step  10261  rss  1.61 GB  mps  0.00 GB
+step  10271  rss  1.60 GB  mps  0.00 GB
+step  10281  rss  1.60 GB  mps  0.00 GB
+step  10291  rss  1.60 GB  mps  0.00 GB
+step  10301  rss  1.89 GB  mps  0.00 GB
+step  10311  rss  1.92 GB  mps  0.00 GB
+epoch 180 train time 25.8 s
+step  10318  rss  1.57 GB  mps  0.00 GB
+step  10328  rss  1.52 GB  mps  0.00 GB
+step  10338  rss  1.52 GB  mps  0.00 GB
+step  10348  rss  1.52 GB  mps  0.00 GB
+step  10358  rss  1.75 GB  mps  0.00 GB
+step  10368  rss  1.98 GB  mps  0.00 GB
+epoch 181 train time 24.1 s
+step  10375  rss  1.65 GB  mps  0.00 GB
+step  10385  rss  1.65 GB  mps  0.00 GB
+step  10395  rss  1.65 GB  mps  0.00 GB
+step  10405  rss  1.65 GB  mps  0.00 GB
+step  10415  rss  1.65 GB  mps  0.00 GB
+step  10425  rss  1.65 GB  mps  0.00 GB
+epoch 182 train time 24.1 s
+step  10432  rss  1.25 GB  mps  0.00 GB
+step  10442  rss  1.56 GB  mps  0.00 GB
+step  10452  rss  1.56 GB  mps  0.00 GB
+step  10462  rss  1.96 GB  mps  0.00 GB
+step  10472  rss  1.96 GB  mps  0.00 GB
+step  10482  rss  1.90 GB  mps  0.00 GB
+epoch 183 train time 26.6 s
+step  10489  rss  1.56 GB  mps  0.00 GB
+step  10499  rss  1.56 GB  mps  0.00 GB
+step  10509  rss  1.56 GB  mps  0.00 GB
+step  10519  rss  1.56 GB  mps  0.00 GB
+step  10529  rss  1.90 GB  mps  0.00 GB
+step  10539  rss  1.90 GB  mps  0.00 GB
+epoch 184 train time 25.5 s
+step  10546  rss  1.64 GB  mps  0.00 GB
+step  10556  rss  1.55 GB  mps  0.00 GB
+step  10566  rss  1.55 GB  mps  0.00 GB
+step  10576  rss  1.59 GB  mps  0.00 GB
+step  10586  rss  1.59 GB  mps  0.00 GB
+step  10596  rss  1.93 GB  mps  0.00 GB
+epoch 185 train time 24.3 s
+step  10603  rss  1.57 GB  mps  0.00 GB
+step  10613  rss  1.96 GB  mps  0.00 GB
+step  10623  rss  1.92 GB  mps  0.00 GB
+step  10633  rss  1.94 GB  mps  0.00 GB
+step  10643  rss  1.94 GB  mps  0.00 GB
+step  10653  rss  1.94 GB  mps  0.00 GB
+epoch 186 train time 24.5 s
+step  10660  rss  1.54 GB  mps  0.00 GB
+step  10670  rss  1.24 GB  mps  0.00 GB
+step  10680  rss  1.36 GB  mps  0.00 GB
+step  10690  rss  1.55 GB  mps  0.00 GB
+step  10700  rss  1.55 GB  mps  0.00 GB
+step  10710  rss  1.55 GB  mps  0.00 GB
+epoch 187 train time 23.5 s
+step  10717  rss  1.50 GB  mps  0.00 GB
+step  10727  rss  1.59 GB  mps  0.00 GB
+step  10737  rss  1.83 GB  mps  0.00 GB
+step  10747  rss  1.79 GB  mps  0.00 GB
+step  10757  rss  1.79 GB  mps  0.00 GB
+step  10767  rss  1.90 GB  mps  0.00 GB
+epoch 188 train time 25.2 s
+step  10774  rss  1.45 GB  mps  0.00 GB
+step  10784  rss  1.65 GB  mps  0.00 GB
+step  10794  rss  1.65 GB  mps  0.00 GB
+step  10804  rss  1.65 GB  mps  0.00 GB
+step  10814  rss  1.65 GB  mps  0.00 GB
+step  10824  rss  1.65 GB  mps  0.00 GB
+epoch 189 train time 23.8 s
+step  10831  rss  1.61 GB  mps  0.00 GB
+step  10841  rss  1.25 GB  mps  0.00 GB
+step  10851  rss  1.25 GB  mps  0.00 GB
+step  10861  rss  1.18 GB  mps  0.00 GB
+step  10871  rss  1.34 GB  mps  0.00 GB
+step  10881  rss  1.34 GB  mps  0.00 GB
+epoch 190 train time 24.6 s
+step  10888  rss  1.44 GB  mps  0.00 GB
+step  10898  rss  1.44 GB  mps  0.00 GB
+step  10908  rss  1.96 GB  mps  0.00 GB
+step  10918  rss  1.96 GB  mps  0.00 GB
+step  10928  rss  1.91 GB  mps  0.00 GB
+step  10938  rss  1.16 GB  mps  0.00 GB
+epoch 191 train time 26.5 s
+step  10945  rss  1.60 GB  mps  0.00 GB
+step  10955  rss  1.31 GB  mps  0.00 GB
+step  10965  rss  1.31 GB  mps  0.00 GB
+step  10975  rss  1.31 GB  mps  0.00 GB
+step  10985  rss  1.94 GB  mps  0.00 GB
+step  10995  rss  1.94 GB  mps  0.00 GB
+epoch 192 train time 24.9 s
+step  11002  rss  1.56 GB  mps  0.00 GB
+step  11012  rss  1.80 GB  mps  0.00 GB
+step  11022  rss  1.94 GB  mps  0.00 GB
+step  11032  rss  1.94 GB  mps  0.00 GB
+step  11042  rss  1.94 GB  mps  0.00 GB
+step  11052  rss  1.88 GB  mps  0.00 GB
+epoch 193 train time 23.7 s
+step  11059  rss  1.72 GB  mps  0.00 GB
+step  11069  rss  1.92 GB  mps  0.00 GB
+step  11079  rss  1.92 GB  mps  0.00 GB
+step  11089  rss  1.92 GB  mps  0.00 GB
+step  11099  rss  1.92 GB  mps  0.00 GB
+step  11109  rss  1.92 GB  mps  0.00 GB
+epoch 194 train time 23.7 s
+step  11116  rss  1.64 GB  mps  0.00 GB
+step  11126  rss  1.82 GB  mps  0.00 GB
+step  11136  rss  2.10 GB  mps  0.00 GB
+step  11146  rss  1.79 GB  mps  0.00 GB
+step  11156  rss  1.80 GB  mps  0.00 GB
+step  11166  rss  1.80 GB  mps  0.00 GB
+epoch 195 train time 25.2 s
+step  11173  rss  1.63 GB  mps  0.00 GB
+step  11183  rss  1.63 GB  mps  0.00 GB
+step  11193  rss  1.63 GB  mps  0.00 GB
+step  11203  rss  1.91 GB  mps  0.00 GB
+step  11213  rss  1.91 GB  mps  0.00 GB
+step  11223  rss  1.91 GB  mps  0.00 GB
+epoch 196 train time 24.4 s
+step  11230  rss  1.51 GB  mps  0.00 GB
+step  11240  rss  1.91 GB  mps  0.00 GB
+step  11250  rss  1.91 GB  mps  0.00 GB
+step  11260  rss  1.91 GB  mps  0.00 GB
+step  11270  rss  1.91 GB  mps  0.00 GB
+step  11280  rss  1.90 GB  mps  0.00 GB
+epoch 197 train time 25.1 s
+step  11287  rss  1.63 GB  mps  0.00 GB
+step  11297  rss  1.63 GB  mps  0.00 GB
+step  11307  rss  1.63 GB  mps  0.00 GB
+step  11317  rss  1.63 GB  mps  0.00 GB
+step  11327  rss  1.63 GB  mps  0.00 GB
+step  11337  rss  1.74 GB  mps  0.00 GB
+epoch 198 train time 24.3 s
+step  11344  rss  1.63 GB  mps  0.00 GB
+step  11354  rss  1.29 GB  mps  0.00 GB
+step  11364  rss  1.29 GB  mps  0.00 GB
+step  11374  rss  1.29 GB  mps  0.00 GB
+step  11384  rss  1.36 GB  mps  0.00 GB
+step  11394  rss  1.89 GB  mps  0.00 GB
+epoch 199 train time 24.5 s
+`Trainer.fit` stopped: `max_epochs=200` reached.
+{
+ "name": "rot250_painn",
+ "args": {
+  "train": [
+   "../data/rot250_gfn2_train.xyz"
+  ],
+  "valid": [
+   "../data/rot250_gfn2_valid.xyz"
+  ],
+  "name": "rot250_painn",
+  "model": "painn",
+  "features": 128,
+  "interactions": 3,
+  "cutoff": 5.0,
+  "epochs": 200,
+  "batch_size": 4,
+  "micro_batch": null,
+  "lr": 0.0005,
+  "energy_weight": 0.05,
+  "device": "cpu",
+  "seed": 123,
+  "max_steps": -1
+ },
+ "n_train": 225,
+ "n_valid": 25,
+ "epochs_run": 200,
+ "wall_s": 4909.8,
+ "valid_energy_mae_meV_per_atom": 0.501010306615323,
+ "valid_forces_mae_meV_per_A": 60.74630765954802,
+ "n_params": 589057
+}
+/Users/cafierom/python_mac/schnet/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+  rot250_painn stacking center_4F               -4.18
+  rot250_painn stacking center_2F               -4.45
+  rot250_painn stacking center_0F               -3.44
+  rot250_painn stacking weak_stopper_real       -3.19
+  rot250_painn stacking strong_stopper_real     -6.40
+  rot250_painn stacking strong_stopper          -4.00
+  rot250_painn stacking weak_stopper             0.41
+  rot250_painn whole    cf3_ring               -20.20
+  rot250_painn whole    iso_ring               -19.20
+  rot250_painn whole    central_cf3side        -17.62
+  rot250_painn whole    central_isoside        -14.94
+
+=== stacking fragments (kcal/mol) — CCSD(T)/aug-cc-pVTZ reference ===
+  pairing                 CCSD(T)     DFT    GFN2   OFF23   rot250_painn mace:off-medium mace:ft-medium  mace:ft-large
+  center_4F                -10.10  -10.09  -10.26  -10.67          -4.18         -10.67         -11.17         -14.99
+  center_2F                 -9.63   -9.30   -9.90   -9.77          -4.45          -9.77         -10.71         -14.87
+  center_0F                 -7.59   -7.28   -8.58   -8.17          -3.44          -8.17          -9.23         -13.04
+  weak_stopper_real         -8.09   -8.23   -7.84   -8.09          -3.19          -8.09          -8.78         -11.19
+  strong_stopper_real          --  -11.53  -11.71  -11.51          -6.40         -11.51         -12.35         -16.71
+  strong_stopper               --  -11.52  -12.33  -10.71          -4.00         -10.71         -13.20         -16.69
+  weak_stopper                 --   -9.50  -10.52   -8.99           0.41          -8.99         -10.72         -13.49
+  vs CCSD(T)                                                        5.04           0.32           1.12           4.67   <- MAE
+  vs GFN2 (trained level)                                            6.55           0.65           0.72           4.27   <- MAE
+
+=== whole-structure double stacks (kcal/mol) — UMA reference ===
+  geometry                    UMA   rot250_painn mace:off-medium mace:ft-medium  mace:ft-large
+  central_isoside          -30.62         -14.94         -26.21         -31.41         -38.42
+  central_cf3side          -36.05         -17.62         -31.28         -32.87         -42.06
+  iso_ring                 -36.73         -19.20         -30.69         -34.05         -46.28
+  cf3_ring                 -38.17         -20.20         -33.52         -36.08         -44.59
+  outlier gap                5.43           2.67           5.06           1.46           3.64
+  ordering matches UMA         --           True          False           True          False
+== done Wed 23 Sep 2026 17:02:23 BST
