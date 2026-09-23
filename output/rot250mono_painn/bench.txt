@@ -1,0 +1,32 @@
+  rot250mono_painn stacking center_4F               -4.03
+  rot250mono_painn stacking center_2F               -4.87
+  rot250mono_painn stacking center_0F               -4.42
+  rot250mono_painn stacking weak_stopper_real       -2.21
+  rot250mono_painn stacking strong_stopper_real     -6.10
+  rot250mono_painn stacking strong_stopper          -3.05
+  rot250mono_painn stacking weak_stopper             0.11
+  rot250mono_painn whole    cf3_ring               -26.50
+  rot250mono_painn whole    iso_ring               -30.91
+  rot250mono_painn whole    central_cf3side        -28.41
+  rot250mono_painn whole    central_isoside        -27.47
+
+=== stacking fragments (kcal/mol) — CCSD(T)/aug-cc-pVTZ reference ===
+  pairing                 CCSD(T)     DFT    GFN2   OFF23 rot250mono_painn mace:off-medium mace:ft-medium  mace:ft-large
+  center_4F                -10.10  -10.09  -10.26  -10.67          -4.03         -10.67         -11.17         -14.99
+  center_2F                 -9.63   -9.30   -9.90   -9.77          -4.87          -9.77         -10.71         -14.87
+  center_0F                 -7.59   -7.28   -8.58   -8.17          -4.42          -8.17          -9.23         -13.04
+  weak_stopper_real         -8.09   -8.23   -7.84   -8.09          -2.21          -8.09          -8.78         -11.19
+  strong_stopper_real          --  -11.53  -11.71  -11.51          -6.10         -11.51         -12.35         -16.71
+  strong_stopper               --  -11.52  -12.33  -10.71          -3.05         -10.71         -13.20         -16.69
+  weak_stopper                 --   -9.50  -10.52   -8.99           0.11          -8.99         -10.72         -13.49
+  vs CCSD(T)                                                        4.97           0.32           1.12           4.67   <- MAE
+  vs GFN2 (trained level)                                            6.65           0.65           0.72           4.27   <- MAE
+
+=== whole-structure double stacks (kcal/mol) — UMA reference ===
+  geometry                    UMA rot250mono_painn mace:off-medium mace:ft-medium  mace:ft-large
+  central_isoside          -30.62         -27.47         -26.21         -31.41         -38.42
+  central_cf3side          -36.05         -28.41         -31.28         -32.87         -42.06
+  iso_ring                 -36.73         -30.91         -30.69         -34.05         -46.28
+  cf3_ring                 -38.17         -26.50         -33.52         -36.08         -44.59
+  outlier gap                5.43           0.94           5.06           1.46           3.64
+  ordering matches UMA         --          False          False           True          False

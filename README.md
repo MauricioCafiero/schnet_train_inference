@@ -174,16 +174,20 @@ code/
   gfn2_data.py        generate GFN2 datasets: relax, Langevin MD, normal-mode sampling
   ood_spk.py          latent-distance OOD score vs the training frames (PaiNN final layer)
   layer_sweep_spk.py  which PaiNN layer gives the best OOD signal
+  make_monomers.py    split rotaxane frames into rod + wheel monomers, check topology, draw
 data/
   rot250_gfn2{,_train,_valid}.xyz   250 GFN2-labelled rotaxane frames, 225/25 split (the MACE split)
   rot1_gfn2{,_train,_valid}.xyz     221 frames from GFN2 MD + normal modes (same rotaxane)
   rot1_sampled_250.xyz              the unlabelled 250-frame sample behind rot250
+  rot250_{rod,wheel}_gfn2_{train,valid}.xyz   GFN2-labelled monomers of the rot250 frames
+  rot250_gfn2_{train,valid}_{rod,wheel}.xyz   the same monomers, unlabelled (make_monomers.py)
   rotaxane_bench/                   stacking (fragment) and whole-structure dimer/rod/wheel geometries
   mace_bench_results.json           MACE results on the benchmark (from ../mace, not recomputed)
   ood/                              OOD test sets: S66 (Psi4 module), dethread1 frames, rosuvastatin,
                                     OFF23 test sample (local only)
 examples/
   run_rot250_painn.sh               train (or resume) PaiNN on rot250, then benchmark + OOD check
+  run_rot250mono_painn.sh           label monomers, train on rotaxane + rod + wheel, benchmark + OOD
 output/                             run directories, logs, benchmark results
 ```
 
@@ -413,8 +417,10 @@ reference distribution was MACE-OFF23's broad small-molecule training data and
 rotaxanes were the novel chemistry. Here the model has only ever seen one
 rotaxane, so ordinary molecules are the out-of-distribution case.
 
-**Method.** Each atom's final PaiNN scalar feature (`scalar_representation`,
-the 128-d vector the energy readout acts on) is unit-normalized. It is scored
+**Method.** (Run 1 scores below use the final layer, `mix3`. After the layer
+sweep, the default is now `mix1`; see Run 2.) Each atom's final PaiNN scalar
+feature (`scalar_representation`, the 128-d vector the energy readout acts
+on) is unit-normalized. It is scored
 by cosine distance to the nearest same-element atom in a pool built from the
 225 training frames (32,400 atoms). A structure's score is the mean over its
 atoms. Atoms of an element absent from training (S, Cl, …) score 1.0. The
@@ -524,14 +530,146 @@ vector layer was also scored after subtracting the per-element mean
   mix1) gives about twice the separation at the same error correlation.
   vnorm1 has the highest energy-error correlation (0.86).
 
+## Run 2: rotaxane + rod and wheel monomers
+
+Run 1's benchmark and OOD check both pointed to the same gap: the model never
+saw a separated rod or wheel. Run 2 adds them.
+
+**Monomer data.** `code/make_monomers.py` splits every rot250 frame into its
+two covalent components. The rod and wheel of a rotaxane are mechanically
+interlocked but not bonded, so the covalent graph (ASE natural cutoffs) has
+exactly two connected components. Every monomer keeps the geometry it has
+inside the rotaxane, which is exactly what $E_\text{int} = E_\text{rotaxane} -
+E_\text{rod} - E_\text{wheel}$ needs. The script checks that all 250 frames
+give the same two molecules (RDKit bond perception from the 3D coordinates)
+and draws them (`output/monomers.png`, `output/monomers_explicit_H.png`):
+
+- **wheel:** 24-crown-8, C16H32O8 (56 atoms)
+- **rod:** C44H26F14N2O2 (88 atoms), a neutral bis-amide axle. A
+  para-quaterphenyl core carries one aryl F on each terminal ring, linked by
+  amides to 3,5-bis(trifluoromethyl)benzyl stoppers:
+  `O=C(NCc1cc(C(F)(F)F)cc(C(F)(F)F)c1)c1ccc(-c2ccc(-c3ccc(-c4ccc(C(=O)NCc5cc(C(F)(F)F)cc(C(F)(F)F)c5)c(F)c4)cc3)cc2)cc1F`
+
+The 500 monomers were labelled with `gfn2_label.py` in 80 s. The split
+follows the rotaxane split (monomers of the 25 held-out frames are held out),
+so nothing leaks from training into validation. Files:
+`data/rot250_gfn2_{train,valid}_{rod,wheel}.xyz` (unlabelled) and
+`data/rot250_{rod,wheel}_gfn2_{train,valid}.xyz` (labelled).
+
+Because the rotaxane and its monomers are labelled at identical geometries,
+the data also gives a GFN2 **in-distribution interaction energy** for each
+frame: −23.7 ± 6.3 kcal/mol on the training frames and **−22.2 ± 4.4
+kcal/mol** on the 25 held-out frames.
+
+**Training** (`examples/run_rot250mono_painn.sh`): same PaiNN-128
+architecture, from scratch. Trained on 675 frames (225 rotaxanes + 225 rods +
+225 wheels) and validated on 75. 300 epochs, CPU, batch 4, Adam at 5e-4
+(halved once by the plateau scheduler, to 2.5e-4), **gradient-norm clipping
+at 10** (`--grad-clip`). There were no loss spikes, unlike run 1's divergence.
+About 47 s per epoch, 4.4 h wall time (including about 36 min of sleep
+pauses, see the note below), peak 1.95 GB. Best epoch 294.
+
+### Fit to GFN2 (held-out frames)
+
+| model | rotaxane energy | rotaxane forces | rod forces | wheel forces |
+|---|---|---|---|---|
+| run 1, rotaxane only (epoch 188) | 0.50 meV/atom | 60.7 meV/Å | – | – |
+| **run 2, + monomers (epoch 294)** | **0.29 meV/atom** | **26.9 meV/Å** | 21.3 meV/Å | 19.5 meV/Å |
+| MACE-OFF23 medium, fine-tuned | 0.5 meV/atom | 30.6 meV/Å | – | – |
+| MACE-OFF23 large, fine-tuned | 0.6 meV/atom | 25.7 meV/Å | – | – |
+
+Run 2 halves the rotaxane force error and **matches the fine-tuned MACE
+models**, with lower energy error. Several changes landed at once: the
+monomer frames (more and simpler environments of the same chemistry),
+gradient clipping, and 100 more epochs of stable training. This run does not
+separate their effects.
+
+### In-distribution interaction energy (25 held-out frames)
+
+| | $E_\text{int}$ (kcal/mol) | MAE vs GFN2 | mean error | correlation with GFN2 |
+|---|---|---|---|---|
+| GFN2-xTB | −22.20 ± 4.44 | – | – | – |
+| run 1, rotaxane only | −13.77 ± 4.56 | 8.42 | +8.42 | 0.95 |
+| **run 2, + monomers** | **−22.69 ± 4.73** | **1.04** | **−0.49** | **0.97** |
+
+This is the cleanest test of the underbinding hypothesis, and it confirms it.
+Run 1 already ranked the frames correctly (r = 0.95) but recovered only about
+62% of the binding: the "relative right, absolute wrong" pattern seen on the
+benchmark. Trained with the monomers, the model reproduces GFN2's
+interaction energies to 1 kcal/mol with essentially no bias.
+
+### Rotaxane benchmark
+
+The benchmark systems are **different molecules** from the training
+rotaxane. The whole-structure wheel is C24H32O8, consistent with
+dibenzo-24-crown-8, and the rod is C28H22F6N2O6. The stacking set uses small
+capped fragments. This is therefore a transfer test.
+
+| | run 1 | run 2 | MACE ft-medium | MACE ft-large |
+|---|---|---|---|---|
+| stacking MAE vs GFN2 (kcal/mol) | 6.55 | 6.65 | 0.72 | 4.27 |
+| stacking MAE vs CCSD(T) | 5.04 | 4.97 | 1.12 | 4.67 |
+| whole structures, ratio to UMA | 0.49–0.53 | **0.69–0.90** | 0.91–1.03 | 1.17–1.26 |
+| whole structures, ordering matches UMA | yes | no | yes | no |
+| whole structures, outlier gap (UMA 5.43) | 2.67 | 0.94 | 1.46 | 3.64 |
+
+Whole-structure values for run 2: central_isoside −27.47, central_cf3side
+−28.41, iso_ring −30.91, cf3_ring −26.50 (UMA −30.62, −36.05, −36.73,
+−38.17). Full tables: `output/rot250mono_painn/bench.txt`.
+
+- **The large, rotaxane-like systems improve a lot.** Binding on the whole
+  structures goes from about half of UMA to 69–90%. Learning what separated
+  components look like transfers to a related crown-ether/amide rotaxane.
+  However, the ranking of the four geometries is now wrong: cf3_ring comes
+  out weakest instead of strongest, and the outlier gap collapses.
+- **The small capped stacking fragments do not improve** (MAE vs GFN2
+  unchanged at about 6.6 kcal/mol). They are far from anything in the
+  training data (5–8× the OOD threshold, below), and no amount of data on one
+  rotaxane teaches the model small capped aromatic dimers.
+
+### OOD check with the monomers in the reference pool
+
+`ood_spk.py` now scores the `mix1` layer by default (first-block update,
+following the layer sweep), with `--layer` to choose another. Median score
+÷ held-out maximum, from `ood_scores_mix1.csv` (run 1) and
+`output/rot250mono_painn/ood_scores.csv` (run 2):
+
+| set | run 1 (pool: rotaxane) | run 2 (pool: rotaxane + rod + wheel) |
+|---|---|---|
+| rot1, same rotaxane, other sampling | 1.5× | 1.7× |
+| benchmark whole: rod / wheel | 4.2× / 3.2× | 3.1× / 3.0× |
+| benchmark whole: dimer | 4.4× | 3.7× |
+| dethread1 | 3.4× | 3.3× |
+| benchmark stacking: rod / wheel | 7.6× / 11.0× | 5.0× / 8.5× |
+| S66 monomers | 13.2× | 12.1× |
+| OFF23 sample | 37.8× | 21.2× |
+
+The benchmark components move closer to the training distribution, most for
+the stacking fragments (by 23–34%), but all stay well outside it. The
+largest drop is OFF23 (38× → 21×). The ordering of the sets is unchanged. As
+before, 98–99% of the rot1 frames exceed the threshold that 25 held-out
+frames set, so the ratios are the useful quantity.
+
+### Note on the pauses during this run
+
+Epochs 58, 135 and 212 took 495, 1014 and 791 s instead of about 47 s. The
+power log (`pmset -g log`) shows the cause. The previous job's `caffeinate`
+exited with that job at 18:01, and with nothing holding it the Mac
+idle-slept at 18:08. From then on it ran only in Power Nap DarkWakes, which
+macOS ends with a "Maintenance Sleep" about every hour whatever `caffeinate`
+asserts. `caffeinate -u` (declare user activity) brought it back to FullWake
+at 22:33, and there were no pauses after that. Both runners now end with a
+30-minute `sleep 1800` grace period, as in the Rotaxanes runners, so
+`caffeinate` outlives the job.
+
 ## Next steps
 
-- Add separated rod and wheel conformers, and partially dethreaded
-  geometries, to the training data. They can be labelled with
-  `gfn2_label.py` / `gfn2_data.py`. This is the change the benchmark and the
-  OOD check both point to.
-- Stabilize training: gradient clipping, a decaying learning-rate schedule
-  from the start, and weight EMA.
+- Train on monomers of more rotaxanes, and on partially dethreaded
+  geometries (`dethread1`), so interaction energies transfer beyond this one
+  system. The whole-structure ordering regressed in run 2.
+- Add small capped fragments (or S66-like dimers) labelled with GFN2 if the
+  stacking benchmark matters. They are far outside the current data.
+- Separate the effects of the monomer data and gradient clipping (a
+  rotaxane-only run with clipping).
 - Try a larger cutoff (6–7 Å) or an explicit long-range term to capture more
   of the dispersion tail.
-- Switch `ood_spk.py` to a first-block layer, per the layer sweep.

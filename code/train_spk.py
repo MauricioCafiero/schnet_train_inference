@@ -100,6 +100,8 @@ def main(argv=None):
     p.add_argument("--device", default="mps", help="mps | cpu | cuda")
     p.add_argument("--seed", type=int, default=123)
     p.add_argument("--max-steps", type=int, default=-1, help="for quick probes")
+    p.add_argument("--grad-clip", type=float, default=None,
+                   help="clip the gradient norm to this value (guards against loss spikes)")
     p.add_argument("--resume", action="store_true",
                    help="continue output/<name>/ from lightning/last.ckpt up to --epochs "
                         "(total); optimizer, LR schedule and best-model score are restored")
@@ -182,6 +184,7 @@ def main(argv=None):
     trainer = pl.Trainer(
         accelerator=a.device, devices=1, max_epochs=a.epochs, max_steps=a.max_steps,
         accumulate_grad_batches=a.batch_size // micro,
+        gradient_clip_val=a.grad_clip,
         default_root_dir=str(out / "lightning"),
         logger=CSVLogger(str(out / "lightning"), name="", version=version),
         callbacks=[spk.train.ModelCheckpoint(model_path=str(out / "best_model"),
@@ -205,18 +208,25 @@ def main(argv=None):
     calc = spk.interfaces.SpkCalculator(
         str(out / "best_model"), neighbor_list=trn.MatScipyNeighborList(a.cutoff),
         energy_unit="eV", position_unit="Ang", device="cpu", dtype=torch.float64)
-    de, df = [], []
+    de, df, formula = [], [], []
     for f in valid:
         at = f.copy()
         at.calc = calc
         de.append((at.get_potential_energy() - f.info["REF_energy"]) / len(f))
         df.append(np.abs(at.get_forces() - f.arrays["REF_forces"]).ravel())
+        formula.append(f.get_chemical_formula())
         at.calc = None
     res = {"name": a.name, "args": vars(a), "n_train": len(train), "n_valid": len(valid),
            "epochs_run": trainer.current_epoch, "wall_s": round(wall, 1),
            "valid_energy_mae_meV_per_atom": 1000 * float(np.mean(np.abs(de))),
            "valid_forces_mae_meV_per_A": 1000 * float(np.concatenate(df).mean()),
            "n_params": sum(p.numel() for p in model.parameters())}
+    if len(set(formula)) > 1:   # mixed validation set (e.g. rotaxane + monomers): per molecule
+        res["valid_by_formula"] = {
+            fm: {"n": formula.count(fm),
+                 "energy_mae_meV_per_atom": 1000 * float(np.mean([abs(e) for e, x in zip(de, formula) if x == fm])),
+                 "forces_mae_meV_per_A": 1000 * float(np.concatenate([d for d, x in zip(df, formula) if x == fm]).mean())}
+            for fm in sorted(set(formula))}
     (out / "metrics.json").write_text(json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
 

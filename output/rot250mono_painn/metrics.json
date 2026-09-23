@@ -1,0 +1,54 @@
+{
+ "name": "rot250mono_painn",
+ "args": {
+  "train": [
+   "/Users/cafierom/python_mac/schnet/data/rot250_gfn2_train.xyz",
+   "/Users/cafierom/python_mac/schnet/data/rot250_rod_gfn2_train.xyz",
+   "/Users/cafierom/python_mac/schnet/data/rot250_wheel_gfn2_train.xyz"
+  ],
+  "valid": [
+   "/Users/cafierom/python_mac/schnet/data/rot250_gfn2_valid.xyz",
+   "/Users/cafierom/python_mac/schnet/data/rot250_rod_gfn2_valid.xyz",
+   "/Users/cafierom/python_mac/schnet/data/rot250_wheel_gfn2_valid.xyz"
+  ],
+  "name": "rot250mono_painn",
+  "model": "painn",
+  "features": 128,
+  "interactions": 3,
+  "cutoff": 5.0,
+  "epochs": 300,
+  "batch_size": 4,
+  "micro_batch": null,
+  "lr": 0.0005,
+  "energy_weight": 0.05,
+  "device": "cpu",
+  "seed": 123,
+  "max_steps": -1,
+  "grad_clip": 10.0,
+  "resume": false
+ },
+ "n_train": 675,
+ "n_valid": 75,
+ "epochs_run": 300,
+ "wall_s": 16013.7,
+ "valid_energy_mae_meV_per_atom": 0.2817851677295887,
+ "valid_forces_mae_meV_per_A": 23.757081713960808,
+ "n_params": 589057,
+ "valid_by_formula": {
+  "C16H32O8": {
+   "n": 25,
+   "energy_mae_meV_per_atom": 0.33585687900995254,
+   "forces_mae_meV_per_A": 19.466268345214985
+  },
+  "C44H26F14N2O2": {
+   "n": 25,
+   "energy_mae_meV_per_atom": 0.2215876836854394,
+   "forces_mae_meV_per_A": 21.34529519986729
+  },
+  "C60H58F14N2O10": {
+   "n": 25,
+   "energy_mae_meV_per_atom": 0.2879109404933741,
+   "forces_mae_meV_per_A": 26.89960089375244
+  }
+ }
+}

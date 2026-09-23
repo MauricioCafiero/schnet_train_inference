@@ -31,3 +31,7 @@ $PY rotaxane_bench.py --spk-model $NAME=$REPO/output/$NAME/best_model \
     | tee $REPO/output/$NAME/bench.txt
 $PY ood_spk.py $REPO/output/$NAME/best_model | tee $REPO/output/$NAME/ood.txt
 echo "== done $(date)"
+
+# Grace period (as in the Rotaxanes runners): keep caffeinate alive past
+# completion so the machine does not idle-sleep the moment the work ends.
+sleep 1800

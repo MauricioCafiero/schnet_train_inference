@@ -5,15 +5,19 @@ reference distribution was MACE-OFF23's broad small-molecule training data and
 rotaxanes were the novel chemistry; here the model has only ever seen one
 rotaxane, so ordinary molecules are the out-of-distribution case.
 
-Signal: each atom's final PaiNN scalar feature (``scalar_representation``, the
-per-atom vector the energy readout acts on) is unit-normalized and scored by
+Signal: each atom's PaiNN scalar feature after the first block's update step
+(``mix1``, the default; any ``int<k>`` / ``mix<k>`` via ``--layer``) is
+unit-normalized and scored by
 cosine distance to the nearest same-element atom in a reference pool built from
 the training frames. A structure's score is the mean over its atoms (``max``
 is reported too). Atoms of an element absent from training score 1.0 (the
 maximum) and are counted separately.
 
 The in-distribution scale is calibrated on the held-out validation frames of
-the same rotaxane; the threshold is their maximum score.
+the same rotaxane; the threshold is their maximum score. The layer sweep
+(layer_sweep_spk.py) found the first block separates foreign chemistry about
+2x more widely than the final layer, at the same correlation with the model's
+own errors.
 
     python ood_spk.py ../output/rot250_painn/best_model
 
@@ -92,20 +96,25 @@ def test_sets():
 
 
 class LatentScorer:
-    def __init__(self, model_path, cutoff=5.0):
+    def __init__(self, model_path, cutoff=5.0, layer="mix1"):
         self.model = torch.load(model_path, map_location="cpu", weights_only=False).double().eval()
         self.conv = spk.interfaces.AtomsConverter(
             neighbor_list=trn.MatScipyNeighborList(cutoff), dtype=torch.float64, device="cpu")
         self.pool = {}
+        # scalar output of block k's message (int) or update (mix) step
+        kind, k = layer[:3], int(layer[3:]) - 1
+        rep = self.model.representation
+        block = (rep.interactions if kind == "int" else rep.mixing)[k]
+        block.register_forward_hook(lambda m, i, o: setattr(self, "_q", o[0]))
 
     @torch.no_grad()
     def latents(self, atoms):
-        """Unit-normalized final scalar features, one row per atom."""
+        """Unit-normalized scalar features of the chosen layer, one row per atom."""
         inputs = self.conv(atoms)
         for m in self.model.input_modules:
             inputs = m(inputs)
-        q = self.model.representation(inputs)["scalar_representation"]
-        q = q.reshape(len(atoms), -1).numpy()
+        self.model.representation(inputs)
+        q = self._q.reshape(len(atoms), -1).numpy()
         return q / np.linalg.norm(q, axis=1, keepdims=True)
 
     def build_pool(self, frames):
@@ -135,10 +144,12 @@ def main(argv=None):
     p.add_argument("--train", nargs="+", default=[str(_DATA / "rot250_gfn2_train.xyz")],
                    help="training frames that define the reference pool")
     p.add_argument("--cutoff", type=float, default=5.0)
+    p.add_argument("--layer", default="mix1", choices=[f"{t}{k}" for t in ("int", "mix") for k in (1, 2, 3)])
     a = p.parse_args(argv)
     out = Path(a.model).parent
 
-    sc = LatentScorer(a.model, a.cutoff)
+    sc = LatentScorer(a.model, a.cutoff, a.layer)
+    print("layer:", a.layer)
     sc.build_pool([f for path in a.train for f in read(path, ":")])
     np.savez(out / "ood_pool.npz", **{chemical_symbols[z]: v for z, v in sc.pool.items()})
     print("pool:", {chemical_symbols[z]: len(v) for z, v in sc.pool.items()})

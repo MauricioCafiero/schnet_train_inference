@@ -1,0 +1,20 @@
+layer: mix1
+pool: {'H': 13050, 'C': 13500, 'N': 450, 'O': 2250, 'F': 3150}
+
+set                               n  mean score: min  median     max   >thr unseen-el
+rot250 valid (held out)          25           0.0001  0.0002  0.0002     0%         0
+rot1 GFN2 MD/normal modes       221           0.0002  0.0003  0.0005    99%         0
+bench whole: dimer                4           0.0009  0.0009  0.0009   100%         0
+bench whole: rod                  4           0.0009  0.0009  0.0009   100%         0
+bench whole: wheel                4           0.0006  0.0007  0.0007   100%         0
+bench stacking: dimer             7           0.0014  0.0019  0.0022   100%         0
+bench stacking: rod               7           0.0005  0.0016  0.0019   100%         0
+bench stacking: wheel             7           0.0022  0.0023  0.0023   100%         0
+dethread1 (112-atom system)      10           0.0007  0.0007  0.0008   100%         0
+S66 dimers                       66           0.0011  0.0027  0.0082   100%         0
+S66 monomers                    132           0.0010  0.0027  0.0091   100%         0
+OFF23 test sample               300           0.0003  0.0078  0.5779   100%       147
+rosuvastatin                      1           0.0194  0.0194  0.0194   100%         1
+
+threshold (max of held-out rot250 frames): 0.0002
+wrote /Users/cafierom/python_mac/schnet/output/rot250_painn/ood_pool.npz and /Users/cafierom/python_mac/schnet/output/rot250_painn/ood_scores.csv
